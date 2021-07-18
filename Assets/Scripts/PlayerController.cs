@@ -65,6 +65,14 @@ public class PlayerController : MonoBehaviour
         dodoBody.AddForce(direction * speed); 
     }
 
+    void OnTriggerEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Eagle"))
+        {
+            Debug.Log("Player eaten by eagle!");
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Rock"))

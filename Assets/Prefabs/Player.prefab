@@ -99,7 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b730249912d2574da314605cad19370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rockEffect: 10
+  rockEffect: 20
+  maxSpeed: 5
+  speed: 70
 --- !u!50 &684413786815499141
 Rigidbody2D:
   serializedVersion: 4
