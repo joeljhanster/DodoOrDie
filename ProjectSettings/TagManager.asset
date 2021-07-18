@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Rock
   - Eagle
+  - Ground
   layers:
   - Default
   - TransparentFX
