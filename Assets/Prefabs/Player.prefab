@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 684413786815499142}
   - component: {fileID: 684413786815499141}
   - component: {fileID: 684413786815499140}
+  - component: {fileID: 1882057334}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -76,10 +77,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2638636664803031553, guid: f5d3059413bf23647a3150cba34fec65, type: 3}
+  m_Sprite: {fileID: 2893727692163940154, guid: f5d3059413bf23647a3150cba34fec65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 2, y: 2.6666667}
   m_AdaptiveModeThreshold: 0.5
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b730249912d2574da314605cad19370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rockEffect: 20
+  gameConstants: {fileID: 11400000, guid: 0592face385c93b4b8fb6d5258b192b0, type: 2}
   maxSpeed: 5
   speed: 70
 --- !u!50 &684413786815499141
@@ -117,7 +118,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 3
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: -3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -149,6 +150,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!95 &1882057334
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684413786815499145}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: df094e5f9b137354c93fa3df53e77ca8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &684413788051470173
 GameObject:
   m_ObjectHideFlags: 0

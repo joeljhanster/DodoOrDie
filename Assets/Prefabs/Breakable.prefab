@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Debris: {fileID: 5462706649877423765, guid: 67cdd8dc87160064b839e17f3ffcd4e2, type: 3}
+  gameConstants: {fileID: 11400000, guid: 0592face385c93b4b8fb6d5258b192b0, type: 2}
   mainCamera: {fileID: 0}
 --- !u!50 &7943424347058119096
 Rigidbody2D:

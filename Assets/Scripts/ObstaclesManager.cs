@@ -5,18 +5,18 @@ using UnityEngine;
 public class ObstaclesManager : MonoBehaviour
 {
     public GameObject obstacle;
-    public Transform mainCamera;
 
     private float viewportHalfWidthX;
     private float viewportHalfHeightY;
     private float obstacleWidth;
+    
     // Start is called before the first frame update
     void Start()
     {
         Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
         
-        viewportHalfWidthX  =  Mathf.Abs(bottomLeft.x  -  mainCamera.position.x);
-        viewportHalfHeightY = Mathf.Abs(bottomLeft.y  -  mainCamera.position.y);
+        viewportHalfWidthX  =  Mathf.Abs(bottomLeft.x  -  Camera.main.transform.position.x);
+        viewportHalfHeightY = Mathf.Abs(bottomLeft.y  -  Camera.main.transform.position.y);
 
         obstacleWidth = obstacle.GetComponent<SpriteRenderer>().sprite.rect.width;
 
