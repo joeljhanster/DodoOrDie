@@ -13,6 +13,9 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     private Rigidbody2D dodoBody;
     private Animator dodoAnimator;
     private AudioSource dodoAudio;
+    public AudioClip dodo_jump;
+    public AudioClip dodo_death;
+
     private bool faceRightState = true;
     private bool onGroundState = true;
     public float maxSpeed = 20;
@@ -64,6 +67,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         dodoBody = GetComponent<Rigidbody2D>();
         dodoAnimator = GetComponent<Animator>();
         dodoAudio = GetComponent<AudioSource>();
+        GameManager.OnPlayerDeath += PlayerDiesSequence;
     }
 
 
@@ -141,6 +145,22 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     }
 
     void  PlayJumpSound(){
-	    dodoAudio.PlayOneShot(dodoAudio.clip);
+	    dodoAudio.PlayOneShot(dodo_jump);
+    }
+
+    void PlayerDiesSequence()
+    {
+        dodoAnimator.SetBool("isDead", true);
+        dodoAudio.PlayOneShot(dodo_death);
+        GetComponent<Collider2D>().enabled = false;
+        dodoBody.AddForce(Vector2.up  *  30, ForceMode2D.Impulse);
+        dodoBody.gravityScale = 2;
+        StartCoroutine(dead());
+    }
+
+    IEnumerator dead()
+    {
+        yield return new WaitForSeconds(5.0f);
+        dodoBody.bodyType = RigidbodyType2D.Static;
     }
 }
