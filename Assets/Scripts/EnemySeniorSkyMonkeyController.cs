@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySkyController : MonoBehaviour
+public class EnemySeniorSkyController : MonoBehaviour
 {
     
 	private  Rigidbody2D monkeyBody;
@@ -11,8 +11,8 @@ public class EnemySkyController : MonoBehaviour
     private AudioSource monkeyScream;
     private bool monkeyDead = false;
     public  GameObject banana; 
-    public float duration = 2f;
-    private float timeLeft = 0.5f;
+    public float duration = 4f;
+    private float timeLeft = 5f;
     // Start is called before the first frame update
     void Start()
     {
