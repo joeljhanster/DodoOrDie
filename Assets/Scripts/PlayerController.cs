@@ -61,7 +61,13 @@ public class PlayerController : MonoBehaviour
 
     // FixedUpdate may be called once per frame. See documentation for details.
     void FixedUpdate(){
-        Vector2 direction = new Vector2(moveRight - moveLeft, moveUp - moveDown);
+        if (moveDown>0){
+            transform.position = new Vector2(transform.position.x, transform.position.y-2f);
+        }
+        if (moveUp>0){
+            transform.position = new Vector2(transform.position.x, transform.position.y+2f);
+        }
+        Vector2 direction = new Vector2(moveRight - moveLeft, 0);
         dodoBody.AddForce(direction * speed); 
     }
 
@@ -79,13 +85,16 @@ public class PlayerController : MonoBehaviour
         {
             dodoBody.AddForce(Vector2.up * rockEffect, ForceMode2D.Impulse);
         }
+        if (col.gameObject.CompareTag("Snake")){
+            Debug.Log("Player killed by snake");
+        }
 
     }
 
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         Vector2 direction = new Vector2(moveRight - moveLeft, moveUp - moveDown);
         Debug.Log(direction);
         // dodoBody.MovePosition(dodoBody.position + speed * direction * Time.fixedDeltaTime);
