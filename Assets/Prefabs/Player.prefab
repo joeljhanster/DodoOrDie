@@ -81,11 +81,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2893727692163940154, guid: f5d3059413bf23647a3150cba34fec65,
-    type: 3}
+  m_Sprite: {fileID: 2893727692163940154, guid: f5d3059413bf23647a3150cba34fec65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 1
+  m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2, y: 2.6666667}
   m_AdaptiveModeThreshold: 0.5
@@ -315,6 +314,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockEffect: 10
+  onPlayerEaten:
+    m_PersistentCalls:
+      m_Calls: []
+  dodo_jump: {fileID: 0}
+  dodo_death: {fileID: 0}
   maxSpeed: 7
   speed: 20
   upForce: 20
