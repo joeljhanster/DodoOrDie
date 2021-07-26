@@ -11,11 +11,14 @@ public class crocoController : MonoBehaviour
     public Vector3 vector3;
 
     public GameObject Player;
+    public UpdateScore other;
 
+    private AudioSource crocoaudio;
 
     void Start(){
         crocoAnimator = GetComponent<Animator>();
         Player = GameObject.Find("Player");
+        crocoaudio = GetComponent<AudioSource>();
     }
     void Update(){
         if (hitdodo == true){
@@ -23,10 +26,11 @@ public class crocoController : MonoBehaviour
             if (timeStart <= 1){
                 if (timeStart <= 0){
                     Player.transform.parent = null;  
-                    Player.transform.localPosition=vector3;
+                    respawn();
                     timeStart = 2;
                 }
                 crocoAnimator.SetTrigger("onWait2sec");
+                crocoaudio.PlayOneShot(crocoaudio.clip);
             }
         }   
     }
@@ -44,5 +48,14 @@ public class crocoController : MonoBehaviour
             coll.transform.parent = null;  
             hitdodo = false;     
         } 
+    }
+    public void respawn(){
+        if (Player.transform.localPosition == vector3){
+            return;
+        }
+        else{
+            Player.transform.localPosition = vector3;
+            other.GetComponent<UpdateScore>().ifdie();
+        }
     }
 }
