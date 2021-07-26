@@ -1,28 +1,23 @@
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
+using System;
 
-public class RiverPlayerController : MonoBehaviour
-{
-
-    public float rockEffect = 10;
-
-    private Rigidbody2D dodoBody;
+public class Frog : MonoBehaviour {
     private Animator dodoAnimator;
 
-    public float maxSpeed;
-    public float speed;
+    private Rigidbody2D dodoBody;
 
+    // Jump Speed
+    public float speed = 0.1f;
     private float moveLeft;
     private float moveRight;
     private float moveUp;
     private float moveDown;
+    // Current jump
+    Vector2 jump = Vector2.zero;
 
     private PlayerControls controls;
-    
+
     void Awake()
     {
         controls = new PlayerControls();
@@ -39,6 +34,14 @@ public class RiverPlayerController : MonoBehaviour
         controls.Gameplay.MoveDown.canceled += ctx => moveDown = 0.0f;
     }
 
+    void  Start()
+    {
+        // Set to be 30 FPS
+        Application.targetFrameRate =  30;
+        dodoBody = GetComponent<Rigidbody2D>();
+        dodoAnimator = GetComponent<Animator>();
+    }
+
     void OnEnable()
     {
         controls.Gameplay.Enable();
@@ -49,41 +52,44 @@ public class RiverPlayerController : MonoBehaviour
         controls.Gameplay.Disable();
     }
 
-
-    void  Start()
-    {
-        // Set to be 30 FPS
-        Application.targetFrameRate =  30;
-        dodoBody = GetComponent<Rigidbody2D>();
-        dodoAnimator = GetComponent<Animator>();
+    // Is the Frog currently jumping?
+    public bool isJumping() {
+        return jump != Vector2.zero;
     }
-
-
-    // FixedUpdate may be called once per frame. See documentation for details.
-    void FixedUpdate(){
-        Vector2 direction = new Vector2(moveRight - moveLeft, moveUp - moveDown);
-        dodoBody.AddForce(direction * speed); 
+    
+    // FixedUpdate for Physics Stuff
+    void FixedUpdate () {
+        // Currently jumping?
+        if (isJumping())
+        {
+            // Remember current position
+            Vector2 pos = transform.position;
+            
+            // Jump a bit further
+            transform.position = Vector2.MoveTowards(pos, pos+jump, speed);
+            
+            // Subtract stepsize from jumpvector
+            jump -= (Vector2)transform.position-pos;
+        }
+        // Otherwise allow for next jump
+        else
+        {
+            if (moveUp > 0)
+                jump = Vector2.up;
+            else if (moveRight > 0)
+                jump = Vector2.right;
+            else if (moveDown > 0)
+                jump = -Vector2.up; // -up means down
+            else if (moveLeft > 0)
+                jump = -Vector2.right; // -right means left
+        } 
     }
-
-    // void OnTriggerEnter2D(Collision2D col)
-    // {
-    //     if (col.gameObject.CompareTag("Eagle"))
-    //     {
-    //         Debug.Log("Player eaten by eagle!");
-    //     }
+    
+    // void OnCollisionEnter2D(Collision2D coll) {
+    //     // Game Over
+    //     Destroy(gameObject);
     // }
 
-    // void OnCollisionEnter2D(Collision2D col)
-    // {
-    //     if (col.gameObject.CompareTag("Rock"))
-    //     {
-    //         dodoBody.AddForce(Vector2.up * rockEffect, ForceMode2D.Impulse);
-    //     }
-
-    // }
-
-
-    // Update is called once per frame
     void Update()
     {
         Vector2 direction = new Vector2(moveRight - moveLeft, moveUp - moveDown);
@@ -106,5 +112,3 @@ public class RiverPlayerController : MonoBehaviour
         }
     }
 }
-
-
