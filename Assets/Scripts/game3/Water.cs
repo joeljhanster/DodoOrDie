@@ -8,10 +8,13 @@ public class Water : MonoBehaviour {
     public UpdateScore other;
     // public Text lives;
     // private int playerScore =  5;
+    private AudioSource failaudio;
 
     void Start(){
         // UpdateScore = GameObject.Find("Lives");
         Player = GameObject.Find("Player");
+        failaudio = GetComponent<AudioSource>();
+
     }
     void OnTriggerStay2D(Collider2D coll) {
         // Frog?
@@ -37,6 +40,7 @@ public class Water : MonoBehaviour {
         else{
             Player.transform.localPosition = vector3;
             other.GetComponent<UpdateScore>().ifdie();
+            failaudio.PlayOneShot(failaudio.clip);
         }
     }
 }
