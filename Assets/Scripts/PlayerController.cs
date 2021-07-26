@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private float moveRight;
     private float moveUp;
     private float moveDown;
+    private float jump;
 
     private float originalGravity;
     private bool eaten = false;
@@ -61,6 +62,9 @@ public class PlayerController : MonoBehaviour
 
         controls.Gameplay.MoveDown.performed += ctx => moveDown = ctx.ReadValue<float>();
         controls.Gameplay.MoveDown.canceled += ctx => moveDown = 0.0f;
+
+        controls.Gameplay.Jump.performed += ctx => jump = ctx.ReadValue<float>();
+        controls.Gameplay.Jump.canceled += ctx => jump = 0.0f;
     }
 
     void OnEnable()
