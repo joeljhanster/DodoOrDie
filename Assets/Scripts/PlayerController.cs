@@ -115,9 +115,10 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         countdownText.text = "1";
         yield return new WaitForSeconds(1.0f);
-        countdownText.text = string.Empty;
-
+        countdownText.text = "Escape!";
         StartCoroutine("startTimer");
+        yield return new WaitForSeconds(1.0f);
+        countdownText.text = string.Empty;
     }
 
     IEnumerator startTimer()

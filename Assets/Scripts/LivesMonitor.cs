@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LivesMonitor : MonoBehaviour
 {
     public IntVariable dodoLives;
+    public GameConstants gameConstants;
     public Text text;
 
     public void UpdateLives()
@@ -16,6 +17,7 @@ public class LivesMonitor : MonoBehaviour
 
     public void Start()
     {
+        dodoLives.SetValue(gameConstants.startingLives);
         UpdateLives();
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 {
 
     public float rockEffect = 10;
+    public UnityEvent onPlayerEaten;
 
     private Rigidbody2D dodoBody;
     private Animator dodoAnimator;
@@ -160,6 +162,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 
     IEnumerator dead()
     {
+        onPlayerEaten.Invoke();
         yield return new WaitForSeconds(5.0f);
         dodoBody.bodyType = RigidbodyType2D.Static;
     }
