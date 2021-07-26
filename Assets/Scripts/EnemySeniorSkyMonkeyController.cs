@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySeniorSkyController : MonoBehaviour
+public class EnemySeniorSkyMonkeyController : MonoBehaviour
 {
     
 	private  Rigidbody2D monkeyBody;
@@ -12,7 +12,8 @@ public class EnemySeniorSkyController : MonoBehaviour
     private bool monkeyDead = false;
     public  GameObject banana; 
     public float duration = 4f;
-    private float timeLeft = 5f;
+    private float timeLeft = 0.5f;
+    private bool visible;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +24,20 @@ public class EnemySeniorSkyController : MonoBehaviour
         monkeyScream = GetComponent<AudioSource>();
         
     }
+    void OnBecameVisible(){
+        visible = true;
+    }   
+    void OnBecameInvisible(){
+        visible = false;	
+    }
 
 
     // Update is called once per frame
     void Update()
     {
+        if(visible){
         StartCoroutine(SpawnBananas());
+        }
     }
 
     void  OnTriggerEnter2D(Collider2D other){

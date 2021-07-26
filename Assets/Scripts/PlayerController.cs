@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         dodoBody.AddForce(direction * speed); 
     }
 
-    void OnTriggerEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Eagle"))
         {

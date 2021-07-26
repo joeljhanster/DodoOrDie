@@ -13,6 +13,7 @@ public class EnemySkyController : MonoBehaviour
     public  GameObject banana; 
     public float duration = 2f;
     private float timeLeft = 0.5f;
+    private bool visible;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +24,20 @@ public class EnemySkyController : MonoBehaviour
         monkeyScream = GetComponent<AudioSource>();
         
     }
+    void OnBecameVisible(){
+        visible = true;
+    }   
+    void OnBecameInvisible(){
+        visible = false;	
+    }
 
 
     // Update is called once per frame
     void Update()
     {
+        if(visible){
         StartCoroutine(SpawnBananas());
+        }
     }
 
     void  OnTriggerEnter2D(Collider2D other){

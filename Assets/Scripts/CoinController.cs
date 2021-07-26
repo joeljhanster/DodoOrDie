@@ -22,13 +22,12 @@ public class CoinController : MonoBehaviour
         
         if (col.gameObject.CompareTag("Player")){
             Debug.Log("Coin Collected");
-            
             CentralManager.centralManagerInstance.increaseScore();
-
             collectCoinAudio.Play();
+            Debug.Log("HERE");
+            this.GetComponent<SpriteRenderer>().enabled  =  false;
+            this.GetComponent<BoxCollider2D>().enabled  =  false;
 		    StartCoroutine(collectCoin());
-            // coinBody.transform.parent.GetComponent<SpriteRenderer>().enabled  =  false;
-            // coinBody.transform.parent.GetComponent<BoxCollider2D>().enabled  =  false;
             // GetComponent<EdgeCollider2D>().enabled  =  false;
         }
     }
