@@ -5,8 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameConstants", menuName = "ScriptableObjects/GameConstants", order = 1)]
 public class GameConstants : ScriptableObject
 {
+    public int gameDuration = 90;
+
     // Used in PlayerController.cs
+    public int startingLives = 10;
+
     public float rockEffect = 10.0f;
+
+    public int immunityDuration = 3;
 
     // Thin Dodo
     public float maxSpeed = 5.0f;
@@ -26,7 +32,6 @@ public class GameConstants : ScriptableObject
     public float mistStartSpeed = 1.0f;
     public float cliffMaxSpeed = 5.0f;
     public float mistMaxSpeed = 5.0f;
-    public float maxTime = 120.0f;
 
     // Used in CatchingEagleController.cs
     public float patrolTime = 0.5f;
@@ -40,4 +45,11 @@ public class GameConstants : ScriptableObject
 
     // Used in Break.cs
     public int numDebris = 5;
+
+    // Used in ChangeSceneEV.cs
+    public string cliffScene = "1_Cliff";
+    public string forestScene = "2_Forest";
+    public string riverScene = "3_River";
+    public string bridgeScene = "4_Bridge";
+    public string beachScene = "5_Beach";
 }

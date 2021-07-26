@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Break : MonoBehaviour
 {
-    // public GameObject gameObject;
     private bool broken = false;
     public GameObject Debris;
     public GameConstants gameConstants;
     private float viewportHalfWidthX;
     private float viewportHalfHeightY;
-    private float obstacleWidth;
     private Rigidbody2D obstacleBody;
+    private AudioSource obstacleAudio;
     private Vector3 bottomLeft;
     private float topY;
     private Quaternion startRot;
@@ -20,6 +19,7 @@ public class Break : MonoBehaviour
     void Start()
     {
         obstacleBody = GetComponent<Rigidbody2D>();
+        obstacleAudio = GetComponent<AudioSource>();
 
         bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0,0,0));
 
@@ -53,11 +53,13 @@ public class Break : MonoBehaviour
            resetPosition();
        }
     }
-    void  OnTriggerEnter2D(Collider2D col){
+    void  OnTriggerEnter2D(Collider2D col)
+    {
         if (col.gameObject.CompareTag("Player") &&  !broken){
+            obstacleAudio.Play();
             broken  =  true;
             // assume we have 5 debris per box
-            for (int x = 0; x<gameConstants.numDebris; x++){
+            for (int x = 0; x < gameConstants.numDebris; x++){
                 Instantiate(Debris, transform.position, Quaternion.identity);
             }
             // gameObject.transform.GetComponent<SpriteRenderer>().enabled  =  false;

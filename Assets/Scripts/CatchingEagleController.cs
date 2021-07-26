@@ -22,6 +22,7 @@ public class CatchingEagleController : MonoBehaviour
     private Vector3 startPosition;
 
     private bool chasing = false;
+    private bool playerSurvived = false;
 
     private float moveDistance = 0.0f;
     private float time = 0.0f;
@@ -38,7 +39,7 @@ public class CatchingEagleController : MonoBehaviour
         viewportHalfWidthX = Mathf.Abs(bottomLeft.x - Camera.main.transform.position.x);
         viewportHalfHeightY = Mathf.Abs(bottomLeft.y - Camera.main.transform.position.y);
 
-        startPosition = new Vector3(bottomLeft.x + viewportHalfWidthX, bottomLeft.y + (2.0f * viewportHalfHeightY) - (eagleBox.size.y / 5.0f), 0.0f);
+        startPosition = new Vector3(bottomLeft.x + viewportHalfWidthX, bottomLeft.y + (2.0f * viewportHalfHeightY) - (eagleBox.size.y / 10.0f), 0.0f);
         transform.position = startPosition;
         dangerZoneY = Camera.main.transform.position.y - viewportHalfHeightY / 2.0f;
         eatingZoneY = Camera.main.transform.position.y - eagleBox.size.y / 2.0f;
@@ -67,11 +68,18 @@ public class CatchingEagleController : MonoBehaviour
         // }
     }
 
+    public void PlayerSurvivesResponse()
+    {
+        playerSurvived = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
         time += Time.fixedDeltaTime;
-        if (time > gameConstants.startDuration) {
+        if (playerSurvived) {
+            eagleBody.MovePosition(eagleBody.position + Vector2.up / 20.0f);
+        } else if (time > gameConstants.startDuration) {
             eagleSprite.enabled = true;
             eagleBox.enabled = true;
             chasePlayer();

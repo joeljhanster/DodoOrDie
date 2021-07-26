@@ -63,4 +63,9 @@ public class CameraBoundary : MonoBehaviour
             topRemoved = true;
         }
     }
+
+    public void playerSurvivesResponse()
+    {
+        colliders["Bottom"].gameObject.SetActive(false);
+    }
 }

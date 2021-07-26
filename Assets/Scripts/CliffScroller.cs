@@ -7,6 +7,7 @@ public class CliffScroller : MonoBehaviour
     // public Renderer[] layers;
     public Renderer cliffLayer;
     public Renderer mistLayer;
+    public Renderer forestLayer;
     public GameConstants gameConstants;
 
     private float cliffSpeed;
@@ -20,6 +21,7 @@ public class CliffScroller : MonoBehaviour
     // public Transform mainCamera;
     private float[] offset;
     private float time = 0.0f;
+    private bool playerSurvived = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,14 +38,19 @@ public class CliffScroller : MonoBehaviour
 
     void CalculateSpeed() {
          // How much to increase over time?
-        float mistIncrement = (gameConstants.mistMaxSpeed - gameConstants.mistStartSpeed) * Time.fixedDeltaTime / gameConstants.maxTime;
-        float cliffIncrement = (gameConstants.cliffMaxSpeed - gameConstants.cliffStartSpeed) * Time.fixedDeltaTime / gameConstants.maxTime;
+        float mistIncrement = (gameConstants.mistMaxSpeed - gameConstants.mistStartSpeed) * Time.fixedDeltaTime / gameConstants.gameDuration;
+        float cliffIncrement = (gameConstants.cliffMaxSpeed - gameConstants.cliffStartSpeed) * Time.fixedDeltaTime / gameConstants.gameDuration;
 
-        if (time < gameConstants.maxTime) {
-            time += Time.deltaTime;
+        if (time < gameConstants.gameDuration) {
+            time += Time.fixedDeltaTime;
             mistSpeed += mistIncrement;
             cliffSpeed += cliffIncrement;
         }
+    }
+
+    public void PlayerSurvived()
+    {
+        playerSurvived = true;
     }
 
     // Update is called once per frame
@@ -59,5 +66,9 @@ public class CliffScroller : MonoBehaviour
         offset[1] = offset[1] + newOffset * mistSpeed;
         mistLayer.material.mainTextureOffset = new Vector2(offset[1], 0);
 
+        // Forest background
+        // if (!playerSurvived) {
+        //     forestLayer.material.mainTextureOffset = new Vector2(0, -offset[0]);
+        // }
     }
 }

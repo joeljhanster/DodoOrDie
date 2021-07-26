@@ -19,10 +19,7 @@ public class ObstaclesManager : MonoBehaviour
         viewportHalfHeightY = Mathf.Abs(bottomLeft.y  -  Camera.main.transform.position.y);
 
         obstacleWidth = obstacle.GetComponent<SpriteRenderer>().sprite.rect.width;
-
-        Debug.Log(bottomLeft);
-        Debug.Log(obstacleWidth);
-
+        
         Instantiate(obstacle,
         new Vector3(
             Random.Range(bottomLeft.x, bottomLeft.x + 2 * viewportHalfWidthX),
