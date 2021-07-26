@@ -40,7 +40,8 @@ public class BlanketBombController : MonoBehaviour
     IEnumerator SpawnBananas(){
         
         if(triggered){
-            Instantiate(banana, new  Vector3(this.transform.position.x + Random.Range(-10, 10), this.transform.position.y + 5.0f, this.transform.position.z), Quaternion.identity);
+            Debug.Log("this.transform.position.z: "+  this.transform.position.z);
+            Instantiate(banana, new  Vector3(this.transform.position.x + Random.Range(-10, 10), this.transform.position.y + 5.0f, -this.transform.position.z-100), Quaternion.identity);
             yield return null;
         }else{yield return null;}
         

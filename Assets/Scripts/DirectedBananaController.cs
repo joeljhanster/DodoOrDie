@@ -28,8 +28,7 @@ public class DirectedBananaController : MonoBehaviour
 
     void ComputeVelocity()
     {
-        velocity = new Vector2(- originalX + playerX, originalY - playerY + 3.5f);
-
+        velocity = new Vector2(playerX - originalX, playerY - originalY);
     }
 
     // Update is called once per frame
