@@ -6,6 +6,9 @@ public class Spawn : MonoBehaviour {
     public float interval = 1;
     public Vector2 velocity = Vector2.right;
 
+    public Vector3 vector3;
+
+
     // Use this for initialization
     void Start () {
         InvokeRepeating("SpawnNext", 0, interval);
@@ -15,7 +18,7 @@ public class Spawn : MonoBehaviour {
         // Instantiate
         GameObject g =(GameObject)Instantiate(prefab,
                                               transform.position,
-                                              Quaternion.identity);
+                                              Quaternion.Euler(vector3));
         // Set Velocity
         g.GetComponent<Rigidbody2D>().velocity = velocity;
     }

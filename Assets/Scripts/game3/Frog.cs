@@ -4,6 +4,9 @@ using System;
 
 public class Frog : MonoBehaviour {
     private Animator dodoAnimator;
+
+    private Rigidbody2D dodoBody;
+
     // Jump Speed
     public float speed = 0.1f;
     private float moveLeft;
@@ -12,6 +15,42 @@ public class Frog : MonoBehaviour {
     private float moveDown;
     // Current jump
     Vector2 jump = Vector2.zero;
+
+    private PlayerControls controls;
+
+    void Awake()
+    {
+        controls = new PlayerControls();
+        controls.Gameplay.MoveLeft.performed += ctx => moveLeft = ctx.ReadValue<float>();
+        controls.Gameplay.MoveLeft.canceled += ctx => moveLeft = 0.0f;
+        
+        controls.Gameplay.MoveRight.performed += ctx => moveRight = ctx.ReadValue<float>();
+        controls.Gameplay.MoveRight.canceled += ctx => moveRight = 0.0f;
+
+        controls.Gameplay.MoveUp.performed += ctx => moveUp = ctx.ReadValue<float>();
+        controls.Gameplay.MoveUp.canceled += ctx => moveUp = 0.0f;
+
+        controls.Gameplay.MoveDown.performed += ctx => moveDown = ctx.ReadValue<float>();
+        controls.Gameplay.MoveDown.canceled += ctx => moveDown = 0.0f;
+    }
+
+    void  Start()
+    {
+        // Set to be 30 FPS
+        Application.targetFrameRate =  30;
+        dodoBody = GetComponent<Rigidbody2D>();
+        dodoAnimator = GetComponent<Animator>();
+    }
+
+    void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.Gameplay.Disable();
+    }
 
     // Is the Frog currently jumping?
     public bool isJumping() {
@@ -35,21 +74,24 @@ public class Frog : MonoBehaviour {
         // Otherwise allow for next jump
         else
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (moveUp > 0)
                 jump = Vector2.up;
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (moveRight > 0)
                 jump = Vector2.right;
-            else if (Input.GetKey(KeyCode.DownArrow))
+            else if (moveDown > 0)
                 jump = -Vector2.up; // -up means down
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            else if (moveLeft > 0)
                 jump = -Vector2.right; // -right means left
-        }
-        
-        // Animation Parameters
-        GetComponent<Animator>().SetFloat("X", jump.x);
-        GetComponent<Animator>().SetFloat("Y", jump.y);
-        GetComponent<Animator>().speed = Convert.ToSingle(isJumping());
+        } 
+    }
+    
+    // void OnCollisionEnter2D(Collision2D coll) {
+    //     // Game Over
+    //     Destroy(gameObject);
+    // }
 
+    void Update()
+    {
         Vector2 direction = new Vector2(moveRight - moveLeft, moveUp - moveDown);
         Debug.Log(direction);
         // dodoBody.MovePosition(dodoBody.position + speed * direction * Time.fixedDeltaTime);
@@ -68,10 +110,5 @@ public class Frog : MonoBehaviour {
             dodoAnimator.SetBool("moveLeft", false);
             dodoAnimator.SetBool("moveUp", false);
         }
-    }
-    
-    void OnCollisionEnter2D(Collision2D coll) {
-        // Game Over
-        Destroy(gameObject);
     }
 }

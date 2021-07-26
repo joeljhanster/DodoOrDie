@@ -65,22 +65,22 @@ public class RiverPlayerController : MonoBehaviour
         dodoBody.AddForce(direction * speed); 
     }
 
-    void OnTriggerEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Eagle"))
-        {
-            Debug.Log("Player eaten by eagle!");
-        }
-    }
+    // void OnTriggerEnter2D(Collision2D col)
+    // {
+    //     if (col.gameObject.CompareTag("Eagle"))
+    //     {
+    //         Debug.Log("Player eaten by eagle!");
+    //     }
+    // }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Rock"))
-        {
-            dodoBody.AddForce(Vector2.up * rockEffect, ForceMode2D.Impulse);
-        }
+    // void OnCollisionEnter2D(Collision2D col)
+    // {
+    //     if (col.gameObject.CompareTag("Rock"))
+    //     {
+    //         dodoBody.AddForce(Vector2.up * rockEffect, ForceMode2D.Impulse);
+    //     }
 
-    }
+    // }
 
 
     // Update is called once per frame
