@@ -92,6 +92,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         if ((jump > 0) && onGroundState)
         {
             PlayJumpSound();
+            // dodoAnimator.SetBool("moveUp", true);            
             dodoBody.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
             onGroundState = false;
         }
@@ -124,9 +125,11 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log("moveLeft: " + moveLeft);
+        Debug.Log("moveRight: " + moveRight);
         // toggle state
-        if ((moveLeft > moveRight) && (moveLeft >  0)){
+        if (dodoBody.velocity.normalized.x < 0) {
+        // ((moveLeft > moveRight) && (moveLeft >  0)){
             // faceRightState = false;
             dodoAnimator.SetBool("moveRight", false);
             dodoAnimator.SetBool("moveLeft", true);
@@ -134,7 +137,8 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
             // marioSprite.flipX = true;
         }
 
-        if ((moveRight > moveLeft) && (moveRight >  0)){
+        if (dodoBody.velocity.normalized.x > 0) {
+        // ((moveRight > moveLeft) && (moveRight >  0)){
             // faceRightState = true;
             dodoAnimator.SetBool("moveRight", true);
             dodoAnimator.SetBool("moveLeft", false);
