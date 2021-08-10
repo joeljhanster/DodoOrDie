@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeStart: 2
-  vector3: {x: 0.24, y: -2.97, z: 0}
+  vector3: {x: -8.5, y: -1, z: 0}
   Player: {fileID: 684413786815499145, guid: 00f4003735546844daca80a800732ad0, type: 3}
   other: {fileID: 0}
 --- !u!82 &-3286022084264644345
