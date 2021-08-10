@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 71d74bb31ba894f72912c5a1d31a42cc
   - enabled: 1
+    path: Assets/Scenes/DodoSelection.unity
+    guid: 0a64ea02fae959a428df9bb3d42b9413
+  - enabled: 1
     path: Assets/Scenes/1_Cliff.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

@@ -117,8 +117,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5e41b3fa-bf09-4358-bab2-3bfa42662bc9"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""id"": ""cd4814e4-c5bf-4785-89c9-81a29f9df391"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

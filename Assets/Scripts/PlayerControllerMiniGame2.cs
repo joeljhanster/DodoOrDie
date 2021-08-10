@@ -127,22 +127,35 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     void Update()
     {
 
-        // toggle state
-        if ((moveLeft > moveRight) && (moveLeft >  0)){
-            // faceRightState = false;
-            dodoAnimator.SetBool("moveRight", false);
-            dodoAnimator.SetBool("moveLeft", true);
-            dodoAnimator.SetBool("moveUp", false);
-            // marioSprite.flipX = true;
-        }
+        // // toggle state
+        // if ((moveLeft > moveRight) && (moveLeft >  0)){
+        //     // faceRightState = false;
+        //     dodoAnimator.SetBool("moveRight", false);
+        //     dodoAnimator.SetBool("moveLeft", true);
+        //     dodoAnimator.SetBool("moveUp", false);
+        //     // marioSprite.flipX = true;
+        // }
 
-        if ((moveRight > moveLeft) && (moveRight >  0)){
-            // faceRightState = true;
+        // if ((moveRight > moveLeft) && (moveRight >  0)){
+        //     // faceRightState = true;
+        //     dodoAnimator.SetBool("moveRight", true);
+        //     dodoAnimator.SetBool("moveLeft", false);
+        //     dodoAnimator.SetBool("moveUp", false);
+        //     // marioSprite.flipX = false;
+        // }
+
+        if (moveRight > 0) {
             dodoAnimator.SetBool("moveRight", true);
             dodoAnimator.SetBool("moveLeft", false);
+        } else if (moveLeft > 0) {
+            dodoAnimator.SetBool("moveRight", false);
+            dodoAnimator.SetBool("moveLeft", true);
+        } else {
+            dodoAnimator.SetBool("moveRight", false);
+            dodoAnimator.SetBool("moveLeft", false);
             dodoAnimator.SetBool("moveUp", false);
-            // marioSprite.flipX = false;
         }
+        
 
     }
 

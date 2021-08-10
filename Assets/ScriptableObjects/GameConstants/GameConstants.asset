@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0a133b94e89b4439840d0662a42774, type: 3}
   m_Name: GameConstants
   m_EditorClassIdentifier: 
-  gameDuration: 30
+  gameDuration: 20
   startingLives: 5
   rockEffect: 10
   immunityDuration: 3
