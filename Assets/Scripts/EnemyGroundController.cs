@@ -75,7 +75,7 @@ public class EnemyGroundController : MonoBehaviour
 			// check if collides on top
 			float yoffset = (other.transform.position.y  -  this.transform.position.y);
             Debug.Log("y offset: " + yoffset);
-			if (yoffset  >  0.64f){
+			if (yoffset  >  0.34f){
                 Debug.Log("Kill Enemy");
 				KillSelf();
 			}

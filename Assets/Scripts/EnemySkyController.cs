@@ -11,7 +11,7 @@ public class EnemySkyController : MonoBehaviour
     private AudioSource monkeyScream;
     private bool monkeyDead = false;
     public  GameObject banana; 
-    public float duration = 2f;
+    public float duration = 5f;
     private float timeLeft = 0.5f;
     private bool visible;
     // Start is called before the first frame update
@@ -97,6 +97,7 @@ public class EnemySkyController : MonoBehaviour
 
     IEnumerator SpawnBananas(){
         
+        // Debug.Log("timeLeft: " + timeLeft);
         if(timeLeft > 0){
             timeLeft -= Time.deltaTime;
             // Debug.Log("timeLeft: " + timeLeft);
