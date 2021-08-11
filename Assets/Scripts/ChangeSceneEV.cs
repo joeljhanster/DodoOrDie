@@ -12,8 +12,11 @@ public class ChangeSceneEV : MonoBehaviour
         string currScene = SceneManager.GetActiveScene().name;
         string nextScene;
         Debug.Log(currScene);
-        
-        if (currScene == gameConstants.cliffScene) {
+        if (currScene == gameConstants.menuScene) {
+            nextScene = gameConstants.selectScene;
+        } else if (currScene == gameConstants.selectScene) {
+            nextScene = gameConstants.cliffScene;
+        } else if (currScene == gameConstants.cliffScene) {
             nextScene = gameConstants.forestScene;
         } else if (currScene == gameConstants.forestScene) {
             nextScene = gameConstants.riverScene;

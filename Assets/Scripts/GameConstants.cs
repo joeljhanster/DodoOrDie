@@ -47,6 +47,9 @@ public class GameConstants : ScriptableObject
     public int numDebris = 5;
 
     // Used in ChangeSceneEV.cs
+
+    public string menuScene = "Menu";
+    public string selectScene = "DodoSelection";
     public string cliffScene = "1_Cliff";
     public string forestScene = "2_Forest";
     public string riverScene = "3_River";

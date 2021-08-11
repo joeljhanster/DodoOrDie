@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0a133b94e89b4439840d0662a42774, type: 3}
   m_Name: GameConstants
   m_EditorClassIdentifier: 
-  gameDuration: 20
+  gameDuration: 90
   startingLives: 5
   rockEffect: 10
   immunityDuration: 3
@@ -27,6 +27,8 @@ MonoBehaviour:
   flyInterval: 6
   flyDuration: 1.7
   numDebris: 5
+  menuScene: Menu
+  selectScene: DodoSelection
   cliffScene: 1_Cliff
   forestScene: 2_Forest
   riverScene: 3_River
