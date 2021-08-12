@@ -4,6 +4,7 @@ using System;
 
 public class Frog : MonoBehaviour {
     private Animator dodoAnimator;
+    private GameObject Player;
 
     private Rigidbody2D dodoBody;
 
@@ -17,6 +18,8 @@ public class Frog : MonoBehaviour {
     Vector2 jump = Vector2.zero;
 
     private PlayerControls controls;
+    public Vector3 vector3;
+    public UpdateScore other;
 
     void Awake()
     {
@@ -40,6 +43,7 @@ public class Frog : MonoBehaviour {
         Application.targetFrameRate =  30;
         dodoBody = GetComponent<Rigidbody2D>();
         dodoAnimator = GetComponent<Animator>();
+        Player = GameObject.Find("Player");
     }
 
     void OnEnable()
@@ -59,6 +63,10 @@ public class Frog : MonoBehaviour {
     
     // FixedUpdate for Physics Stuff
     void FixedUpdate () {
+        if (Player.transform.localPosition.y > 5.5 ||  Player.transform.localPosition.y < -5.5){
+            Player.transform.localPosition = vector3;
+            other.GetComponent<UpdateScore>().ifdie();
+        }
         // Currently jumping?
         if (isJumping())
         {
@@ -110,5 +118,7 @@ public class Frog : MonoBehaviour {
             dodoAnimator.SetBool("moveLeft", false);
             dodoAnimator.SetBool("moveUp", false);
         }
+
+
     }
 }

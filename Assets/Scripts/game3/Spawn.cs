@@ -4,7 +4,7 @@ using System.Collections;
 public class Spawn : MonoBehaviour {
     public GameObject prefab;
     public float interval = 1;
-    public Vector2 velocity = Vector2.right;
+    public Vector2 velocity = Vector2.down;
 
     public Vector3 vector3;
 

@@ -11,7 +11,7 @@ public class crocoController : MonoBehaviour
     public Vector3 vector3;
 
     public GameObject Player;
-    public UpdateScore other;
+    public GameObject other;
 
     private AudioSource crocoaudio;
 
@@ -19,6 +19,7 @@ public class crocoController : MonoBehaviour
         crocoAnimator = GetComponent<Animator>();
         Player = GameObject.Find("Player");
         crocoaudio = GetComponent<AudioSource>();
+        other = GameObject.Find("Lives");
     }
     void Update(){
         if (hitdodo == true){
