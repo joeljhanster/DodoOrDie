@@ -48,7 +48,6 @@ public class PlayerSetupMenuController : MonoBehaviour
         if (obj.action.name == controls.Selection.Prev.name && Time.time > ignoreInputTime && !selected)
         {
             float moveLeft = obj.ReadValue<float>();
-            Debug.Log(moveLeft);
 
             if (moveLeft >= 0.9f) {
                 // Prev
@@ -66,7 +65,6 @@ public class PlayerSetupMenuController : MonoBehaviour
         else if (obj.action.name == controls.Selection.Next.name && Time.time > ignoreInputTime && !selected)
         {
             float moveRight = obj.ReadValue<float>();
-            Debug.Log(moveRight);
 
             if (moveRight >= 0.9f) {
                 // Next

@@ -15,4 +15,4 @@ MonoBehaviour:
   DeveloperDescription: 
   dodoName: Pirate Dodo
   dodoSprite: {fileID: 540201392467521172, guid: aed86b8544c8ff9499456e699833d054, type: 3}
-  dodoObject: {fileID: 684413786815499145, guid: 00f4003735546844daca80a800732ad0, type: 3}
+  dodoScorePanel: {fileID: 2906584871457182030, guid: 65acada4e014ed248af7a0b6cd1b6673, type: 3}

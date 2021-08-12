@@ -8,6 +8,11 @@ public class WoodReward : MonoBehaviour
     public GameConstants gameConstants;
     public UnityEvent onWoodCollected;
 
+    public DodoCharacter flowerDodo;
+    public DodoCharacter goldenDodo;
+    public DodoCharacter pirateDodo;
+    public DodoCharacter rgbDodo;
+
     private float viewportHalfWidthX;
     private float viewportHalfHeightY;
     private Vector3 bottomLeft;
@@ -54,19 +59,59 @@ public class WoodReward : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player") && !collected) {
-            collected = true;
+        if (!collected) {
+            if (col.gameObject.CompareTag("FlowerDodo")) {
+                Debug.Log("Wood Collected by flower dodo");
+                collected = true;
 
-            // Do some effect
-            woodAudio.Play();
+                woodAudio.Play();
 
-            // Add score to player
-            // woodCollected.ApplyChange(score);
+                // Add score to dodo
+                flowerDodo.AddScore(score);
 
-            // Call onWoodCollected event
-            onWoodCollected.Invoke();
+                onWoodCollected.Invoke();
 
-            resetPosition();
+                resetPosition();
+            }
+            else if (col.gameObject.CompareTag("GoldenDodo")) {
+                Debug.Log("Wood Collected by golden dodo");
+                collected = true;
+
+                woodAudio.Play();
+
+                // Add score to dodo
+                goldenDodo.AddScore(score);
+
+                onWoodCollected.Invoke();
+
+                resetPosition();
+            }
+            else if (col.gameObject.CompareTag("PirateDodo")) {
+                Debug.Log("Wood Collected by pirate dodo");
+                collected = true;
+
+                woodAudio.Play();
+
+                // Add score to dodo
+                pirateDodo.AddScore(score);
+
+                onWoodCollected.Invoke();
+
+                resetPosition();
+            }
+            else if (col.gameObject.CompareTag("RGBDodo")) {
+                Debug.Log("Wood Collected by rgb dodo");
+                collected = true;
+
+                woodAudio.Play();
+
+                // Add score to dodo
+                rgbDodo.AddScore(score);
+
+                onWoodCollected.Invoke();
+
+                resetPosition();
+            }
         }
     }
 }

@@ -17,8 +17,46 @@ public class DodoCharacter : ScriptableObject
     // Dodo default sprite
     public Sprite dodoSprite;
 
-    // Dodo object
-    public GameObject dodoObject;
+    // Dodo score panel
+    public GameObject dodoScorePanel;
+
+    // Dodo lives
+    private int _lives = 0;
+    public int lives
+    {
+        get {
+            return _lives;
+        }
+    }
+
+    public void SetLives(int lives)
+    {
+        _lives = lives;
+    }
+
+    public void AddLives(int amount)
+    {
+        _lives += amount;
+    }
+
+    // Player score
+    private int _score = 0;
+    public int score
+    {
+        get {
+            return _score;
+        }
+    }
+
+    public void SetScore(int score)
+    {
+        _score = score;
+    }
+
+    public void AddScore(int amount)
+    {
+        _score += amount;
+    }
 
     // Player selected
     private bool _taken = false;
@@ -35,6 +73,7 @@ public class DodoCharacter : ScriptableObject
         _taken = taken;
     }
 
+    // Player input
     private PlayerInput _input;
 
     public PlayerInput Input
