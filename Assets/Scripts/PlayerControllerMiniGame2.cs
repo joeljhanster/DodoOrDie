@@ -15,7 +15,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     private AudioSource dodoAudio;
     public AudioClip dodo_jump;
     public AudioClip dodo_death;
-
+    private Vector3 dodoOriginalPosition;
     private bool faceRightState = true;
     private bool onGroundState = true;
     public float maxSpeed = 20;
@@ -104,6 +104,10 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         {
             Debug.Log("Player eaten by eagle!");
         }
+        if (col.gameObject.CompareTag("EndLevel"))
+        {
+            dodoBody.bodyType = RigidbodyType2D.Static;
+        }
         
     }
 
@@ -154,17 +158,23 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 
     void PlayerDiesSequence()
     {
+        dodoOriginalPosition = transform.position; 
         dodoAnimator.SetBool("isDead", true);
         dodoAudio.PlayOneShot(dodo_death);
         GetComponent<Collider2D>().enabled = false;
         dodoBody.AddForce(Vector2.up  *  30, ForceMode2D.Impulse);
         dodoBody.gravityScale = 2;
         StartCoroutine(dead());
+        // dodoBody.position = dodoOriginalPosition;
     }
 
     IEnumerator dead()
     {
-        yield return new WaitForSeconds(5.0f);
-        dodoBody.bodyType = RigidbodyType2D.Static;
+        yield return new WaitForSeconds(3.0f);
+        // dodoBody.bodyType = RigidbodyType2D.Static;
+        dodoAnimator.SetBool("isDead", false);
+        transform.position = dodoOriginalPosition;
+        GetComponent<Collider2D>().enabled = true;
+        dodoBody.gravityScale = 1;
     }
 }

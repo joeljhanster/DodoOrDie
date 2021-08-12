@@ -258,14 +258,14 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 276781024}
-  - {fileID: 2136489290}
   - {fileID: 2061717783}
-  - {fileID: 1479022234}
   - {fileID: 1769600924}
-  - {fileID: 1724507060}
   - {fileID: 1922472330}
-  - {fileID: 730030203}
   - {fileID: 1215477929}
+  - {fileID: 2136489290}
+  - {fileID: 1479022234}
+  - {fileID: 1724507060}
+  - {fileID: 730030203}
   - {fileID: 519234326}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -427,7 +427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216736832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -587,7 +587,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276781023}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 110}
+  m_LocalPosition: {x: 0, y: 0, z: 117}
   m_LocalScale: {x: 3.3299, y: 3.3299, z: 3.3299}
   m_Children: []
   m_Father: {fileID: 165888800}
@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.4811321, b: 0.12420981, a: 1}
+  m_Color: {r: 0.0990566, g: 0.29327723, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -824,7 +824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.93515706, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.18396229, g: 1, b: 0.98449486, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -844,11 +844,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'The fate of their species rests on their shoulders!!!
+  m_Text: 'But wait!
 
 
-    All the best
-    Dodo Birds!'
+    They see something right off the horizon...
+
+
+    What
+    could it be...'
 --- !u!222 &519234328
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -892,7 +895,7 @@ RectTransform:
   m_LocalScale: {x: 1.049152, y: 1.049152, z: 1.049152}
   m_Children: []
   m_Father: {fileID: 165888800}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -912,7 +915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.93515706, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.18396229, g: 1, b: 0.98449486, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -932,11 +935,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '... Will our dodos ever make it across alive?
-
-
-    Guess we''ll just
-    have to wait and see!'
+  m_Text: That boat spells the survival of their species as they escape this treaterous
+    island!
 --- !u!222 &730030205
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -975,7 +975,7 @@ RectTransform:
   m_LocalScale: {x: 3.3299, y: 3.3299, z: 3.3299}
   m_Children: []
   m_Father: {fileID: 165888800}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -995,7 +995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.4811321, b: 0.12420981, a: 1}
+  m_Color: {r: 0.0990566, g: 0.29327723, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1050,7 +1050,7 @@ RectTransform:
   m_LocalScale: {x: 1.049152, y: 1.049152, z: 1.049152}
   m_Children: []
   m_Father: {fileID: 165888800}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1070,7 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.93515706, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.18396229, g: 1, b: 0.98449486, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1090,14 +1090,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '... the dodos have been able to trek through the jungle!
+  m_Text: '... The river has been crossed!
 
 
-    Finally
-    Freedom!!!
-
-
-    But wait... '
+    That was a close call with those
+    crocodiles!'
 --- !u!222 &1479022236
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1136,7 +1133,7 @@ RectTransform:
   m_LocalScale: {x: 1.049152, y: 1.049152, z: 1.049152}
   m_Children: []
   m_Father: {fileID: 165888800}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1156,7 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.93515706, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.18396229, g: 1, b: 0.98449486, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1176,8 +1173,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "... There seems to be a river up ahead...\n\nwhat is that I see... \n\nAre
-    those Crocodiles?!?!?\n\n"
+  m_Text: 'The sea is so close the Dodo birds can smell it!
+
+
+    All they have to
+    do now is stroll across the beach and get onto the boat!
+
+'
 --- !u!222 &1724507062
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1216,7 +1218,7 @@ RectTransform:
   m_LocalScale: {x: 3.3299, y: 3.3299, z: 3.3299}
   m_Children: []
   m_Father: {fileID: 165888800}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1236,7 +1238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.4811321, b: 0.12420981, a: 1}
+  m_Color: {r: 0.0990566, g: 0.29327723, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1316,6 +1318,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6509830152909904879, guid: dda069756ecc34827bb2dcdfde04406f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3693255916689951666, guid: 09b6f975e81d54a03bfc2bdb7840592f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dda069756ecc34827bb2dcdfde04406f, type: 3}
 --- !u!1 &1922472329
@@ -1348,7 +1354,7 @@ RectTransform:
   m_LocalScale: {x: 3.3299, y: 3.3299, z: 3.3299}
   m_Children: []
   m_Father: {fileID: 165888800}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1368,7 +1374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.4811321, b: 0.12420981, a: 1}
+  m_Color: {r: 0.0990566, g: 0.29327723, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1423,7 +1429,7 @@ RectTransform:
   m_LocalScale: {x: 3.3299, y: 3.3299, z: 3.3299}
   m_Children: []
   m_Father: {fileID: 165888800}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1443,7 +1449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.4811321, b: 0.12420981, a: 1}
+  m_Color: {r: 0.0990566, g: 0.29327723, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1526,7 +1532,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 87065287ef16046cdbcc84bc1577613a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c2bb6f67d4e28438594e8494d40246d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1577,15 +1583,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136489289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1.049152, y: 1.049152, z: 1.049152}
   m_Children: []
   m_Father: {fileID: 165888800}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.4, y: 0.0000061989}
+  m_AnchoredPosition: {x: 11.4, y: 0}
   m_SizeDelta: {x: 340.8435, y: 253.2956}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2136489291
@@ -1601,7 +1607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.93515706, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.18396229, g: 1, b: 0.98449486, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

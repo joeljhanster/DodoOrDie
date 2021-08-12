@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class EndLevelController : MonoBehaviour
 {
+    private AudioSource celebrationAudio;
     // Start is called before the first frame update
     void Start()
     {
+        celebrationAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -17,8 +19,22 @@ public class EndLevelController : MonoBehaviour
     }
     void  OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.tag  ==  "Player"){
+            string currScene = SceneManager.GetActiveScene().name;
+            Debug.Log(currScene);
             Debug.Log("Level Ended!");
-            SceneManager.LoadScene("Game2TOGame3");
+            // SceneManager.LoadScene("Game2TOGame3");
+            celebrationAudio.Play();
+            StartCoroutine(changeScene());
+        }
+    }
+
+    IEnumerator changeScene(){
+        Debug.Log("Changing Scene...");
+        yield return new WaitForSeconds(6.5f);
+        celebrationAudio.Stop();
+        AsyncOperation asyncLoaded = SceneManager.LoadSceneAsync("Game2TOGame3", LoadSceneMode.Single);
+        while(!asyncLoaded.isDone){
+            yield return null;
         }
     }
 }
