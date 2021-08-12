@@ -169,7 +169,7 @@ MonoBehaviour:
   timeStart: 2
   vector3: {x: -8.5, y: -1, z: 0}
   Player: {fileID: 684413786815499145, guid: 00f4003735546844daca80a800732ad0, type: 3}
-  other: {fileID: 0}
+  other: {fileID: 304019268048788207, guid: f249985dfb86a7d4e84d987bdf4dd030, type: 3}
 --- !u!82 &-3286022084264644345
 AudioSource:
   m_ObjectHideFlags: 0
