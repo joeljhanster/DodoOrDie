@@ -125,8 +125,8 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("moveLeft: " + moveLeft);
-        Debug.Log("moveRight: " + moveRight);
+        // Debug.Log("moveLeft: " + moveLeft);
+        // Debug.Log("moveRight: " + moveRight);
         // toggle state
         if (dodoBody.velocity.normalized.x < 0) {
         // ((moveLeft > moveRight) && (moveLeft >  0)){
