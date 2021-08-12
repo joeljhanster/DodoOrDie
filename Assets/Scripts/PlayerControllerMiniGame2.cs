@@ -103,6 +103,11 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         {
             Debug.Log("Player eaten by eagle!");
         }
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Died");
+            onGroundState = true; // back on ground
+        }
         
     }
 
@@ -116,6 +121,11 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         if (col.gameObject.CompareTag("Ground"))
         {
             Debug.Log("Collision with Ground!");
+            onGroundState = true; // back on ground
+        }
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Died");
             onGroundState = true; // back on ground
         }
     }
