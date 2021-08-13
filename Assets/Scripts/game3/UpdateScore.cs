@@ -22,7 +22,7 @@ public class UpdateScore : MonoBehaviour
     }
 
     public void ifdie(){
-        // if(Player.transform.localPosition!=vector3){
+        // if(Player.transform.position!=vector3){
         totallife -=1;
         Textlives.text = "Lives: "  + totallife.ToString();
         // }

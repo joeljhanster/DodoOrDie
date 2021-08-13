@@ -14,15 +14,16 @@ public class Border : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D coll) {
         if (coll.name == "Player")
+            // coll.transform.parent = null;     
             respawn();
     }
 
     public void respawn(){
-        if (Player.transform.localPosition == vector3){
+        if (Player.transform.position == vector3){
             return;
         }
         else{
-            Player.transform.localPosition = vector3;
+            Player.transform.position = vector3;
             other.GetComponent<UpdateScore>().ifdie();
             failaudio.PlayOneShot(failaudio.clip);
         }

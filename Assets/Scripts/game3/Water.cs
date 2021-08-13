@@ -23,7 +23,7 @@ public class Water : MonoBehaviour {
             if (!coll.GetComponent<Frog>().isJumping())
                 // Not on a platform?
                 if (coll.transform.parent == null){
-                    // coll.gameObject.transform.localPosition = vector3;
+                    // coll.gameObject.transform.position = vector3;
                     // other.GetComponent<UpdateScore>().ifdie();
                     respawn();
                 }
@@ -34,11 +34,11 @@ public class Water : MonoBehaviour {
 		            // lives.text = "Lives: "  + playerScore.ToString();
     }
     public void respawn(){
-        if (Player.transform.localPosition == vector3){
+        if (Player.transform.position == vector3){
             return;
         }
         else{
-            Player.transform.localPosition = vector3;
+            Player.transform.position = vector3;
             other.GetComponent<UpdateScore>().ifdie();
             failaudio.PlayOneShot(failaudio.clip);
         }

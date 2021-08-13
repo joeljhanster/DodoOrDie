@@ -63,8 +63,8 @@ public class Frog : MonoBehaviour {
     
     // FixedUpdate for Physics Stuff
     void FixedUpdate () {
-        if (Player.transform.localPosition.y > 5.5 ||  Player.transform.localPosition.y < -5.5){
-            Player.transform.localPosition = vector3;
+        if (Player.transform.position.y > 5.5 ||  Player.transform.position.y < -5.5){
+            Player.transform.position = vector3;
             other.GetComponent<UpdateScore>().ifdie();
         }
         // Currently jumping?

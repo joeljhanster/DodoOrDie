@@ -51,11 +51,11 @@ public class crocoController : MonoBehaviour
         } 
     }
     public void respawn(){
-        if (Player.transform.localPosition == vector3){
+        if (Player.transform.position == vector3){
             return;
         }
         else{
-            Player.transform.localPosition = vector3;
+            Player.transform.position = vector3;
             other.GetComponent<UpdateScore>().ifdie();
         }
     }
