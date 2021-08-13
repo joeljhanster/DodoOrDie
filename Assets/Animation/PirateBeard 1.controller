@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: xSlash
+    m_ConditionEvent: xAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4613484141212469291}
@@ -35,9 +35,7 @@ AnimatorState:
   m_Name: piratebeard_shoot
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -7016867175494328451}
-  - {fileID: -7333273388516666396}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -143,7 +141,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: xSlash
+    m_ConditionEvent: xAttack
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: xSpeed
@@ -175,7 +173,6 @@ AnimatorState:
   m_Transitions:
   - {fileID: -8790928352250975686}
   - {fileID: 407795885967571321}
-  - {fileID: -7856203072132304246}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -230,7 +227,6 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: 7920214609041986012}
   - {fileID: 4274698026090847067}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
@@ -256,7 +252,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: xShoot
+    m_ConditionEvent: xAttack
     m_EventTreshold: 0
   - m_ConditionMode: 4
     m_ConditionEvent: xSpeed
@@ -297,6 +293,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: xShoot
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: xAttack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -349,7 +351,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: xSlash
+    m_ConditionEvent: xAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4613484141212469291}
@@ -379,10 +381,10 @@ AnimatorStateMachine:
     m_Position: {x: 240, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3196451729004435355}
-    m_Position: {x: 580, y: 120, z: 0}
+    m_Position: {x: 570, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4613484141212469291}
-    m_Position: {x: 410, y: 20, z: 0}
+    m_Position: {x: 470, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7862424366609528878}
     m_Position: {x: 400, y: 210, z: 0}
