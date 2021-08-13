@@ -6,10 +6,16 @@ TagManager:
   tags:
   - Rock
   - Eagle
+  - Snake
   - Ground
   - Enemy
   - Coin
-  - PirateBeard
+  - Wood
+  - Ground
+  - FlowerDodo
+  - GoldenDodo
+  - PirateDodo
+  - RGBDodo
   layers:
   - Default
   - TransparentFX
@@ -21,9 +27,9 @@ TagManager:
   - BG1
   - Obstacles
   - Boundary
-  - 
-  - 
-  - 
+  - Resources
+  - Ground
+  - BGForest
   - 
   - 
   - 
@@ -46,4 +52,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 2023394825
     locked: 0

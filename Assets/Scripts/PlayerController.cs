@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
@@ -8,13 +9,29 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
-    public float rockEffect = 10;
+    public GameConstants gameConstants;
 
+    public UnityEvent onPlayerEaten;
+
+    public UnityEvent onPlayerSurvives;
+
+    public IntVariable dodoLives;
+    public Text countdownText;
+    public Text timer;
+    public AudioSource countdownAudio;
+
+    private PlayerControls controls;    // Assign to player?
+
+    private SpriteRenderer dodoSprite;
     private Rigidbody2D dodoBody;
+    private BoxCollider2D dodoBox;
     private Animator dodoAnimator;
+    private AudioSource dodoAudio;
 
-    public float maxSpeed;
-    public float speed;
+    private float viewportHalfWidthX;
+    private float viewportHalfHeightY;
+
+    private Vector3 bottomLeft;
 
     private float moveLeft;
     private float moveRight;
@@ -22,7 +39,14 @@ public class PlayerController : MonoBehaviour
     private float moveDown;
     private float jump;
 
-    private PlayerControls controls;
+    private float originalGravity;
+    private bool eaten = false;
+    private bool immune = false;
+    private bool survived = false;
+    private int timeLeft;
+    private string minutes;
+    private string seconds;
+    private Transform eagle;
     
     void Awake()
     {
@@ -54,45 +78,129 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void  Start()
+    void Start()
     {
         // Set to be 30 FPS
         Application.targetFrameRate =  30;
+        dodoSprite = GetComponent<SpriteRenderer>();
         dodoBody = GetComponent<Rigidbody2D>();
+        dodoBox = GetComponent<BoxCollider2D>();
         dodoAnimator = GetComponent<Animator>();
+        dodoAudio = GetComponent<AudioSource>();
+
+        dodoLives.SetValue(gameConstants.startingLives);
+
+        bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0,0,0));
+        
+        viewportHalfWidthX = Mathf.Abs(bottomLeft.x - Camera.main.transform.position.x);
+        viewportHalfHeightY = Mathf.Abs(bottomLeft.y - Camera.main.transform.position.y);
+
+        originalGravity = dodoBody.gravityScale;
+        timeLeft = gameConstants.gameDuration;
+
+        minutes = Mathf.Floor(timeLeft / 60).ToString("00");
+        seconds = Mathf.RoundToInt(timeLeft % 60).ToString("00");
+        timer.text = minutes + ":" + seconds;
+
+        StartCoroutine("countdown");
+        StartCoroutine("enableImmunity");
     }
 
-
-    // FixedUpdate may be called once per frame. See documentation for details.
-    void FixedUpdate(){
-        Vector2 direction = new Vector2(moveRight - moveLeft, moveUp - moveDown);
-        dodoBody.AddForce(direction * speed); 
-    }
-
-    void OnTriggerEnter2D(Collider2D col)
+    IEnumerator countdown()
     {
-        if (col.gameObject.CompareTag("Eagle"))
-        {
-            Debug.Log("Player eaten by eagle!");
+        countdownText.text = "3";
+        countdownAudio.Play();
+        yield return new WaitForSeconds(0.7f);
+        countdownText.text = "2";
+        yield return new WaitForSeconds(1.0f);
+        countdownText.text = "1";
+        yield return new WaitForSeconds(1.0f);
+        countdownText.text = "Escape!";
+        StartCoroutine("startTimer");
+        yield return new WaitForSeconds(1.0f);
+        countdownText.text = string.Empty;
+    }
+
+    IEnumerator startTimer()
+    {
+        for (int i=0; i <= gameConstants.gameDuration; i++) {
+
+            minutes = Mathf.Floor(timeLeft / 60).ToString("00");
+            seconds = Mathf.RoundToInt(timeLeft % 60).ToString("00");
+
+            timer.text = minutes + ":" + seconds;
+
+            yield return new WaitForSeconds(1.0f);
+            timeLeft -= 1;
+        }
+        onPlayerSurvives.Invoke();
+    }
+
+    IEnumerator enableImmunity()
+    {
+        immune = true;
+        if (!survived) {
+            dodoBody.gravityScale = 0.0f;
+        }
+
+        for (int i=0; i < gameConstants.immunityDuration; i++) {
+            dodoSprite.enabled = false;
+            yield return new WaitForSeconds(.2f);
+            dodoSprite.enabled = true;
+            yield return new WaitForSeconds(.3f);
+            dodoSprite.enabled = false;
+            yield return new WaitForSeconds(.2f);
+            dodoSprite.enabled = true;
+            yield return new WaitForSeconds(.3f);
+        }
+
+        immune = false;
+        if (!survived) {
+            dodoBody.gravityScale = originalGravity;
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    IEnumerator respawnPlayer()
     {
-        if (col.gameObject.CompareTag("Rock"))
-        {
-            dodoBody.AddForce(Vector2.up * rockEffect, ForceMode2D.Impulse);
-        }
+        yield return new WaitForSeconds(4.0f);
 
+        if (dodoLives.Value > 0) {
+            transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - dodoBox.size.y, 0.0f);
+            Debug.Log("Setting eaten to false");
+            eaten = false;
+            dodoBox.enabled = true;
+            StartCoroutine("enableImmunity");
+        } else {
+            // Dodo is dead and cannot respawn
+            Debug.Log("Dodo is dead");
+        }
     }
 
+    IEnumerator playerFalls()
+    {
+        dodoBody.gravityScale = 0.0f;
+        // Wait 5 seconds to show scene transition
+        yield return new WaitForSeconds(5.0f);
+        
+        for (int i=0; i<3; i++) {
+            dodoBody.gravityScale += 0.5f;
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
 
-    // Update is called once per frame
-    void Update()
+    void playerEaten()
+    {
+        Debug.Log("Player eaten by eagle!");
+        dodoAudio.Play();
+        eaten = true;
+        onPlayerEaten.Invoke();
+        dodoBox.enabled = false;
+        StartCoroutine("respawnPlayer");
+    }
+
+    void setAnimation()
     {
         Vector2 direction = new Vector2(moveRight - moveLeft, moveUp - moveDown);
-        Debug.Log(direction);
-        // dodoBody.MovePosition(dodoBody.position + speed * direction * Time.fixedDeltaTime);
         if (moveRight > 0) {
             dodoAnimator.SetBool("moveRight", true);
             dodoAnimator.SetBool("moveLeft", false);
@@ -107,6 +215,71 @@ public class PlayerController : MonoBehaviour
             dodoAnimator.SetBool("moveRight", false);
             dodoAnimator.SetBool("moveLeft", false);
             dodoAnimator.SetBool("moveUp", false);
+        }
+    }
+
+    public void playerSurvivesResponse()
+    {
+        Debug.Log("Player survives");
+        survived = true;
+        StartCoroutine("playerFalls");
+    }
+
+    // FixedUpdate may be called once per frame. See documentation for details.
+    void FixedUpdate()
+    {
+        if (!survived) {
+            Vector2 direction = new Vector2(moveRight - moveLeft, moveUp - moveDown);
+            dodoBody.AddForce(direction * gameConstants.speed); 
+
+            if (direction != Vector2.zero) {
+                dodoBody.gravityScale = originalGravity;
+            }
+        }
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Eagle") && !eaten && !immune && !survived)
+        {
+            playerEaten();
+            // Disable all movement, position at eagle's mouth
+            eagle = col.gameObject.transform;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Rock") && !immune & !survived)
+        {
+            dodoBody.AddForce(Vector2.up * gameConstants.rockEffect, ForceMode2D.Impulse);
+        }
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {   
+        if (survived) {
+            dodoAnimator.SetBool("moveRight", false);
+            dodoAnimator.SetBool("moveLeft", false);
+            dodoAnimator.SetBool("moveUp", false);
+        } else if (eaten) {
+            dodoBody.MovePosition(eagle ? eagle.position : new Vector3(bottomLeft.x - viewportHalfWidthX, bottomLeft.y - viewportHalfHeightY, 0.0f));
+            if (Mathf.Abs(Camera.main.transform.position.x - dodoBody.position.x) > Mathf.Abs(viewportHalfWidthX - dodoBox.size.x)) {
+                transform.position = new Vector3(bottomLeft.x - viewportHalfWidthX, bottomLeft.y - viewportHalfHeightY, 0.0f);
+            }
+        } else {
+            // Control animation
+            setAnimation();
+            
+            if (
+                (Mathf.Abs(Camera.main.transform.position.y - dodoBody.position.y) > Mathf.Abs(viewportHalfHeightY)) ||
+                (Mathf.Abs(Camera.main.transform.position.x - dodoBody.position.x) > Mathf.Abs(viewportHalfWidthX))
+            ) {
+                playerEaten();
+            }
         }
     }
 }

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9db5ef5a98c3f1040a4d068337943503
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Emulogic
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9bc45ea15513c41b493176cb98fb0df0, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
