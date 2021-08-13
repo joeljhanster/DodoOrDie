@@ -36,7 +36,7 @@ public class PirateController : MonoBehaviour
         {
             float step =  speed * Time.deltaTime;
             // Debug.Log("current pos: "+ transform.position);
-            // Debug.Log("dodo pos: "+ target.position);
+            // Debug.Log("dodo pos: "+ target.position)
             // Debug.Log("new pos: "+Vector3.MoveTowards(transform.position,target.transform.position, step));
             animator.SetFloat("xSpeed", Mathf.Abs(rigidBody.velocity.x));
             animator.SetBool("xAttack",false);
