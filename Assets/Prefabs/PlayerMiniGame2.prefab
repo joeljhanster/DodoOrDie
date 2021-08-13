@@ -373,21 +373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockEffect: 10
-  onPlayerEaten:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: c0dc2b57f5b008e47803c375585ead6b, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   dodo_jump: {fileID: 8300000, guid: 58c3d5349925344fba9005df1417ebbf, type: 3}
   dodo_death: {fileID: 8300000, guid: b5c310daf82024c67b69dada15482507, type: 3}
   maxSpeed: 7

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
@@ -10,14 +9,13 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 {
 
     public float rockEffect = 10;
-    public UnityEvent onPlayerEaten;
 
     private Rigidbody2D dodoBody;
     private Animator dodoAnimator;
     private AudioSource dodoAudio;
     public AudioClip dodo_jump;
     public AudioClip dodo_death;
-
+    private Vector3 dodoOriginalPosition;
     private bool faceRightState = true;
     private bool onGroundState = true;
     public float maxSpeed = 20;
@@ -94,6 +92,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         if ((jump > 0) && onGroundState)
         {
             PlayJumpSound();
+            // dodoAnimator.SetBool("moveUp", true);            
             dodoBody.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
             onGroundState = false;
         }
@@ -104,6 +103,10 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         if (col.gameObject.CompareTag("Eagle"))
         {
             Debug.Log("Player eaten by eagle!");
+        }
+        if (col.gameObject.CompareTag("EndLevel"))
+        {
+            dodoBody.bodyType = RigidbodyType2D.Static;
         }
         
     }
@@ -126,36 +129,26 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // // toggle state
-        // if ((moveLeft > moveRight) && (moveLeft >  0)){
-        //     // faceRightState = false;
-        //     dodoAnimator.SetBool("moveRight", false);
-        //     dodoAnimator.SetBool("moveLeft", true);
-        //     dodoAnimator.SetBool("moveUp", false);
-        //     // marioSprite.flipX = true;
-        // }
-
-        // if ((moveRight > moveLeft) && (moveRight >  0)){
-        //     // faceRightState = true;
-        //     dodoAnimator.SetBool("moveRight", true);
-        //     dodoAnimator.SetBool("moveLeft", false);
-        //     dodoAnimator.SetBool("moveUp", false);
-        //     // marioSprite.flipX = false;
-        // }
-
-        if (moveRight > 0) {
-            dodoAnimator.SetBool("moveRight", true);
-            dodoAnimator.SetBool("moveLeft", false);
-        } else if (moveLeft > 0) {
+        // Debug.Log("moveLeft: " + moveLeft);
+        // Debug.Log("moveRight: " + moveRight);
+        // toggle state
+        if (dodoBody.velocity.normalized.x < 0) {
+        // ((moveLeft > moveRight) && (moveLeft >  0)){
+            // faceRightState = false;
             dodoAnimator.SetBool("moveRight", false);
             dodoAnimator.SetBool("moveLeft", true);
-        } else {
-            dodoAnimator.SetBool("moveRight", false);
+            dodoAnimator.SetBool("moveUp", false);
+            // marioSprite.flipX = true;
+        }
+
+        if (dodoBody.velocity.normalized.x > 0) {
+        // ((moveRight > moveLeft) && (moveRight >  0)){
+            // faceRightState = true;
+            dodoAnimator.SetBool("moveRight", true);
             dodoAnimator.SetBool("moveLeft", false);
             dodoAnimator.SetBool("moveUp", false);
+            // marioSprite.flipX = false;
         }
-        
 
     }
 
@@ -165,18 +158,23 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 
     void PlayerDiesSequence()
     {
+        dodoOriginalPosition = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
         dodoAnimator.SetBool("isDead", true);
         dodoAudio.PlayOneShot(dodo_death);
         GetComponent<Collider2D>().enabled = false;
         dodoBody.AddForce(Vector2.up  *  30, ForceMode2D.Impulse);
         dodoBody.gravityScale = 2;
         StartCoroutine(dead());
+        // dodoBody.position = dodoOriginalPosition;
     }
 
     IEnumerator dead()
     {
-        onPlayerEaten.Invoke();
-        yield return new WaitForSeconds(5.0f);
-        dodoBody.bodyType = RigidbodyType2D.Static;
+        yield return new WaitForSeconds(3.0f);
+        // dodoBody.bodyType = RigidbodyType2D.Static;
+        dodoAnimator.SetBool("isDead", false);
+        transform.position = dodoOriginalPosition;
+        GetComponent<Collider2D>().enabled = true;
+        dodoBody.gravityScale = 1;
     }
 }

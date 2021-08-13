@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class CoinController : MonoBehaviour
 {
-    public UnityEvent onWoodCollected;
     private Rigidbody2D coinBody;
     private AudioSource collectCoinAudio;
     // Start is called before the first frame update
@@ -20,7 +18,7 @@ public class CoinController : MonoBehaviour
     {
         
     }
-    void OnTriggerEnter2D(Collider2D col){
+    void  OnTriggerEnter2D(Collider2D col){
         
         if (col.gameObject.CompareTag("Player")){
             Debug.Log("Coin Collected");
@@ -34,9 +32,8 @@ public class CoinController : MonoBehaviour
         }
     }
 
-    IEnumerator collectCoin(){
+    IEnumerator  collectCoin(){
 		Debug.Log("Collecting Coin");
-        onWoodCollected.Invoke();
         while (collectCoinAudio.isPlaying)
         {
             yield return null;

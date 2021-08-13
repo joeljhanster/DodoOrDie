@@ -93,20 +93,19 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        for (int i=0; i<playerInputManager.playerCount; i++) {
-            GameObject optionsPanel = selectionPanels[i].transform.Find("Options").gameObject;
-            if (optionsPanel && !optionsPanel.activeSelf)
-            {
-                optionsPanel.SetActive(true);
-                PlayerInput pi = playerConfigurations[i].Input;
-                pi.uiInputModule = optionsPanel.GetComponentInChildren<InputSystemUIInputModule>();
-                PlayerSetupMenuController menuController = optionsPanel.GetComponent<PlayerSetupMenuController>();
-                menuController.SetPlayerInput(pi);
-            }
-        }
-
-
         if (!changeScene) {
+            for (int i=0; i<playerInputManager.playerCount; i++) {
+                GameObject optionsPanel = selectionPanels[i].transform.Find("Options").gameObject;
+                if (optionsPanel && !optionsPanel.activeSelf)
+                {
+                    optionsPanel.SetActive(true);
+                    PlayerInput pi = playerConfigurations[i].Input;
+                    pi.uiInputModule = optionsPanel.GetComponentInChildren<InputSystemUIInputModule>();
+                    PlayerSetupMenuController menuController = optionsPanel.GetComponent<PlayerSetupMenuController>();
+                    menuController.SetPlayerInput(pi);
+                }
+            }
+
             int joinCount = playerInputManager.playerCount;
             int readyCount = 0;
 

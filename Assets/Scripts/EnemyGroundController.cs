@@ -75,7 +75,7 @@ public class EnemyGroundController : MonoBehaviour
 			// check if collides on top
 			float yoffset = (other.transform.position.y  -  this.transform.position.y);
             Debug.Log("y offset: " + yoffset);
-			if (yoffset  >  0.64f){
+			if (yoffset  >  0.34f){
                 Debug.Log("Kill Enemy");
 				KillSelf();
 			}
@@ -99,7 +99,7 @@ public class EnemyGroundController : MonoBehaviour
 		Debug.Log("Flatten starts");
 		int steps =  30;
 		float stepper =  1.0f/(float) steps;
-
+		enemyBody.isKinematic = true;
 		for (int i =  0; i  <  steps; i  ++){
 			this.transform.localScale  =  new  Vector3(this.transform.localScale.x, this.transform.localScale.y  -  stepper, this.transform.localScale.z);
 
