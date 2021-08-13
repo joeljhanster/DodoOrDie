@@ -158,7 +158,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 
     void PlayerDiesSequence()
     {
-        dodoOriginalPosition = transform.position; 
+        dodoOriginalPosition = new Vector3(transform.position.x,transform.position.y+5,transform.position.z); 
         dodoAnimator.SetBool("isDead", true);
         dodoAudio.PlayOneShot(dodo_death);
         GetComponent<Collider2D>().enabled = false;

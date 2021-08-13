@@ -690,10 +690,11 @@ PlayableDirector:
     value: {fileID: 519234325}
   - key: {fileID: -7633758945289502005, guid: 5c74e3674f06c4e23ab382a57e6081f4, type: 2}
     value: {fileID: 1215477928}
-  - key: {fileID: 8089438660247745347, guid: 5c74e3674f06c4e23ab382a57e6081f4, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 69872168}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - 537699b17b519469ca9ae6e2f4d67cdc: {fileID: 1099041444}
 --- !u!4 &297640077
 Transform:
   m_ObjectHideFlags: 0
@@ -940,6 +941,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730030202}
   m_CullTransparentMesh: 1
+--- !u!1 &1099041444 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1907824416182694796, guid: 02ca9a04a3cd04b9aacd2eccf75bd9f7, type: 3}
+  m_PrefabInstance: {fileID: 200410368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1215477928
 GameObject:
   m_ObjectHideFlags: 0
