@@ -12,12 +12,13 @@ public class PirateController : MonoBehaviour
     private Vector3 currentPos;
     private Vector3 dodoPos;
     private bool faceRight = true;
-    public float attackRadius = 2.0f;
+    public float attackRadius = 1.5f;
     public float speed;
     private bool called = false;
     public List<Transform> dodoObjects;
     public Transform nearestDodo ;
     public float mindistance=10000000000.0f;
+    public AudioSource swordAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class PirateController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        swordAudio = GetComponent<AudioSource>();
 
         // currentPos = transform.position;
         // dodoPos = dodoPlayer.position;
@@ -40,8 +41,9 @@ public class PirateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mindistance=10000000000.0f;
         Transform player = null;
-        float step =  speed * Time.deltaTime*0.3f;
+        float step =  speed * Time.deltaTime;
         foreach(Transform dodo in dodoObjects) {
             if (Mathf.Pow((transform.position.x-dodo.position.x),2)+Mathf.Pow((transform.position.y-dodo.position.y),2)<mindistance){
                 nearestDodo = dodo;
@@ -49,6 +51,9 @@ public class PirateController : MonoBehaviour
             }
         }
         transform.position = Vector3.MoveTowards(transform.position,nearestDodo.transform.position, step);
+        Debug.Log(step);
+        // Debug.Log("xSpeed1",rigidBody.velocity.x);
+        animator.SetFloat("xSpeed", Mathf.Abs(step));
         if ( transform.position.x < nearestDodo.position.x){
             faceRight = true;
             spriteRenderer.flipX=false;
@@ -58,12 +63,13 @@ public class PirateController : MonoBehaviour
             faceRight = false;
             spriteRenderer.flipX=true;
             }
-
+        
         if (mindistance<attackRadius){
-            // if (!called){
-            // CentralManager.centralManagerInstance.killPlayer();
-            // }
-            called = true;
+            animator.SetBool("xAttack",true);
+            swordAudio.Play(0);
+        }
+        else{
+            animator.SetBool("xAttack",false);
         }
 
     }
