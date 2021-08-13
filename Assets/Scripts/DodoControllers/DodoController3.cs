@@ -67,6 +67,7 @@ public class DodoController3 : MonoBehaviour
     {
         // Set to be 30 FPS
         Application.targetFrameRate = 30;
+        // Screen.SetResolution(Screen.width, Screen.width / 16 * 9);
         dodoBody = GetComponent<Rigidbody2D>();
         dodoAnimator = GetComponent<Animator>();
 

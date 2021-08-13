@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1775154141021362701}
   - component: {fileID: 5643810398169562113}
   - component: {fileID: 7821438941803621082}
+  - component: {fileID: 4351811922203043375}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -241,6 +242,27 @@ MonoBehaviour:
   goldenDodo: {fileID: 11400000, guid: fae6c45a54ee2bb42973e3cb4eb68d54, type: 2}
   pirateDodo: {fileID: 11400000, guid: f8b622af39612d140b378f6331b6df2b, type: 2}
   rgbDodo: {fileID: 11400000, guid: 075751afe86c8554380a6ba048a8db12, type: 2}
+--- !u!50 &4351811922203043375
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775154141021362703}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1775154141480437462
 GameObject:
   m_ObjectHideFlags: 0

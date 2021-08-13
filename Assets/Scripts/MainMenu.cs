@@ -38,6 +38,7 @@ public class MainMenu : MonoBehaviour
     {
         // Set to be 30 FPS
         Application.targetFrameRate =  30;
+        // Screen.SetResolution(Screen.width, Screen.width / 16 * 9);
     }
     void Update()
     {

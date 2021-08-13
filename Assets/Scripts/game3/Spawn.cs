@@ -8,6 +8,8 @@ public class Spawn : MonoBehaviour {
 
     public Vector3 vector3;
 
+    public GameObject woodResource;
+
 
     // Use this for initialization
     void Start () {
@@ -16,10 +18,26 @@ public class Spawn : MonoBehaviour {
 
     void SpawnNext() {
         // Instantiate
-        GameObject g =(GameObject)Instantiate(prefab,
-                                              transform.position,
-                                              Quaternion.Euler(vector3));
+        GameObject g =(GameObject)Instantiate(
+            prefab,
+            transform.position,
+            Quaternion.Euler(vector3)
+        );
+
         // Set Velocity
         g.GetComponent<Rigidbody2D>().velocity = velocity;
+
+        float randomValue = Random.Range(0.0f, 1.0f);
+
+        if (woodResource && randomValue > 0.5f) {
+            Debug.Log(g.GetComponent<SpriteRenderer>().sprite.rect.width);
+            float logHalfWidth = g.GetComponent<SpriteRenderer>().sprite.rect.width / 2.3f;
+            GameObject wood = (GameObject) Instantiate(
+                woodResource,
+                new Vector3(g.transform.position.x, Random.Range(g.transform.position.y - logHalfWidth, g.transform.position.y + logHalfWidth), g.transform.position.z),
+                Quaternion.Euler(vector3)
+            );
+            wood.GetComponent<Rigidbody2D>().velocity = velocity;
+        }
     }
 }

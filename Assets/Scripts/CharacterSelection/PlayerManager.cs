@@ -54,6 +54,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        // Screen.SetResolution(Screen.width, Screen.width / 16 * 9);
         playerInputManager = GetComponent<PlayerInputManager>();
     }
 
