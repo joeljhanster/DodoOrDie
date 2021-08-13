@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/2_Forest.unity
     guid: 5c199ee4a4a61d14791226c4df17525c
   - enabled: 1
-    path: Assets/Scenes/horizontal_river.unity
+    path: Assets/Scenes/3_River.unity
     guid: 0b05d54798bd62b4e98c644895e9b0d7
   - enabled: 1
     path: Assets/Scenes/4_Bridge.unity

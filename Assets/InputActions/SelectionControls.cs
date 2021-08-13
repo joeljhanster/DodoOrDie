@@ -98,6 +98,17 @@ public class @SelectionControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""0ee0abb5-1faa-4615-847b-d086948aa1df"",
+                    ""path"": ""<HID::Logitech Logitech Dual Action>/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ff33126a-4821-4188-9f06-b23966c3fd19"",
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
@@ -142,6 +153,17 @@ public class @SelectionControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a056a6fe-2b4f-4364-9c51-67fd5d684004"",
+                    ""path"": ""<HID::Logitech Logitech Dual Action>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Prev"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""56941ec5-b989-4dc1-891b-3ed867f74409"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
@@ -164,6 +186,17 @@ public class @SelectionControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a7841adb-bb07-4958-8107-9ac83eb5ab87"",
+                    ""path"": ""<HID::Logitech Logitech Dual Action>/button3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ready"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""1c86df03-4ca2-4624-8651-6ce3a0753354"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
@@ -177,6 +210,17 @@ public class @SelectionControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""43d1b12a-fa6f-40e8-b0be-e7ba687a9807"",
                     ""path"": ""<XInputController>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1795b13-3a8b-4f79-a82c-05d609bb1155"",
+                    ""path"": ""<HID::Logitech Logitech Dual Action>/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

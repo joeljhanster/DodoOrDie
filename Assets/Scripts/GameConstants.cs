@@ -26,6 +26,9 @@ public class GameConstants : ScriptableObject
     public float upForceForest = 20.0f;
     public float dieUpForceForest = 30.0f;
 
+    // Mini game 3: River
+    public float speedRiver = 0.1f;
+
     // Used in CliffScroller.cs
     public float cliffStartSpeed = 1.0f;
     public float mistStartSpeed = 1.0f;

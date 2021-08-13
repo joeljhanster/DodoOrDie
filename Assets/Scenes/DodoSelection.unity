@@ -763,6 +763,22 @@ MonoBehaviour:
         m_Groups: 
         m_Action: Join
         m_Flags: 0
+      - m_Name: 
+        m_Id: 0b07dfa4-5cd7-4243-ab25-207f148de3be
+        m_Path: <HID::Logitech Logitech Dual Action>/button2
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
+      - m_Name: 
+        m_Id: fac5090b-227b-406b-912f-30e8d3385f18
+        m_Path: <HID::Logitech Logitech Dual Action>/z
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Join
+        m_Flags: 0
     m_Reference: {fileID: 0}
   m_PlayerPrefab: {fileID: 1295968440036858414, guid: 38e800e7d15f9fd4fa3baca59dd2f1df, type: 3}
   m_SplitScreen: 0

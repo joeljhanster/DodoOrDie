@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+// using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class EndLevelController : MonoBehaviour
 {
+    public UnityEvent onSceneChange;
     private AudioSource celebrationAudio;
     // Start is called before the first frame update
     void Start()
@@ -12,11 +14,6 @@ public class EndLevelController : MonoBehaviour
         celebrationAudio = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void  OnTriggerEnter2D(Collider2D other){
         if (
             other.gameObject.CompareTag("FlowerDodo") || 
@@ -24,22 +21,24 @@ public class EndLevelController : MonoBehaviour
             other.gameObject.CompareTag("PirateDodo") ||
             other.gameObject.CompareTag("RGBDodo")
         ){
-            string currScene = SceneManager.GetActiveScene().name;
-            Debug.Log(currScene);
+            onSceneChange.Invoke();
             Debug.Log("Level Ended!");
-            // SceneManager.LoadScene("Game2TOGame3");
             celebrationAudio.Play();
-            StartCoroutine(changeScene());
+
+            // string currScene = SceneManager.GetActiveScene().name;
+            // Debug.Log(currScene);
+            // // SceneManager.LoadScene("Game2TOGame3");
+            // StartCoroutine(changeScene());
         }
     }
 
-    IEnumerator changeScene(){
-        Debug.Log("Changing Scene...");
-        yield return new WaitForSeconds(6.5f);
-        celebrationAudio.Stop();
-        AsyncOperation asyncLoaded = SceneManager.LoadSceneAsync("Game2TOGame3", LoadSceneMode.Single);
-        while(!asyncLoaded.isDone){
-            yield return null;
-        }
-    }
+    // IEnumerator changeScene(){
+    //     Debug.Log("Changing Scene...");
+    //     yield return new WaitForSeconds(6.5f);
+    //     celebrationAudio.Stop();
+    //     AsyncOperation asyncLoaded = SceneManager.LoadSceneAsync("Game2TOGame3", LoadSceneMode.Single);
+    //     while(!asyncLoaded.isDone){
+    //         yield return null;
+    //     }
+    // }
 }

@@ -114,6 +114,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c32c43d2-b312-4075-a7e0-2b1ac6effeef"",
+                    ""path"": ""<HID::Logitech Logitech Dual Action>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""22b07850-bb82-44b7-a10d-725bcceffedc"",
                     ""path"": ""<Joystick>/stick/right"",
                     ""interactions"": """",
@@ -158,6 +169,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""2c91cf63-081a-4a1d-aa70-bbe1b2325648"",
+                    ""path"": ""<HID::Logitech Logitech Dual Action>/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9367c4e9-24d7-486e-971a-4583c69c5735"",
                     ""path"": ""<Joystick>/stick/up"",
                     ""interactions"": """",
@@ -169,8 +191,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cd4814e4-c5bf-4785-89c9-81a29f9df391"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""id"": ""c953a49d-1502-4195-a753-0ea40e86e127"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -193,6 +215,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""335c8172-6697-4ac8-bba7-28d6c7536c5c"",
                     ""path"": ""<XInputController>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e774cce0-961a-45e2-947c-a45a54845f81"",
+                    ""path"": ""<HID::Logitech Logitech Dual Action>/stick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -246,6 +279,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""3ce23ad1-ee25-4477-aa79-adc0c5a1a37d"",
+                    ""path"": ""<HID::Logitech Logitech Dual Action>/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""596c9362-b0ed-4599-ac62-4ac3ce213441"",
                     ""path"": ""<HID::Logitech Logitech Dual Action>/button3"",
                     ""interactions"": """",
@@ -268,6 +312,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""fc464ebb-cdc1-4821-948b-55876d30da79"",
+                    ""path"": ""<HID::Logitech Logitech Dual Action>/button3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""7b7fee28-0b50-4c4d-92b2-882a7837d564"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
@@ -281,6 +336,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""6213d729-3c58-433a-9e11-a47e356ab61a"",
                     ""path"": ""<XInputController>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04a8d72e-28e4-44ae-9afe-48e4c2933961"",
+                    ""path"": ""<HID::Logitech Logitech Dual Action>/button10"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
