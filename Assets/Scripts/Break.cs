@@ -4,32 +4,29 @@ using UnityEngine;
 
 public class Break : MonoBehaviour
 {
+    // public GameObject gameObject;
     private bool broken = false;
     public GameObject Debris;
-    public GameConstants gameConstants;
+
+    public Transform mainCamera;
     private float viewportHalfWidthX;
     private float viewportHalfHeightY;
+    private float obstacleWidth;
     private Rigidbody2D obstacleBody;
-    private AudioSource obstacleAudio;
     private Vector3 bottomLeft;
     private float topY;
-    private Quaternion startRot;
 
     // Start is called before the first frame update
     void Start()
     {
         obstacleBody = GetComponent<Rigidbody2D>();
-        obstacleAudio = GetComponent<AudioSource>();
 
         bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0,0,0));
 
-        viewportHalfWidthX = Mathf.Abs(bottomLeft.x - Camera.main.transform.position.x);
-        viewportHalfHeightY = Mathf.Abs(bottomLeft.y - Camera.main.transform.position.y);
+        viewportHalfWidthX = Mathf.Abs(bottomLeft.x - mainCamera.position.x);
+        viewportHalfHeightY = Mathf.Abs(bottomLeft.y - mainCamera.position.y);
 
         topY = bottomLeft.y + 2 * viewportHalfHeightY;
-
-        startRot = transform.rotation;
-
     }
 
     void resetPosition()
@@ -39,9 +36,6 @@ public class Break : MonoBehaviour
             bottomLeft.y - 10
         );
         obstacleBody.MovePosition(position);
-        obstacleBody.velocity = Vector2.zero;
-        obstacleBody.angularVelocity = 0;
-        transform.rotation = startRot;
         broken = false;
     }
 
@@ -53,20 +47,18 @@ public class Break : MonoBehaviour
            resetPosition();
        }
     }
-    void  OnTriggerEnter2D(Collider2D col)
-    {
-        if ((
-            col.gameObject.CompareTag("FlowerDodo") || 
-            col.gameObject.CompareTag("GoldenDodo") ||
-            col.gameObject.CompareTag("PirateDodo") ||
-            col.gameObject.CompareTag("RGBDodo")
-        ) && !broken) {
-            obstacleAudio.Play();
-            broken = true;
-            // assume we have 5 debris per rock
-            for (int x = 0; x < gameConstants.numDebris; x++) {
+    void  OnTriggerEnter2D(Collider2D col){
+        if (col.gameObject.CompareTag("Player") &&  !broken){
+            broken  =  true;
+            // assume we have 5 debris per box
+            for (int x =  0; x<5; x++){
                 Instantiate(Debris, transform.position, Quaternion.identity);
             }
+            // gameObject.transform.GetComponent<SpriteRenderer>().enabled  =  false;
+            // gameObject.transform.GetComponent<BoxCollider2D>().enabled  =  false;
+            // GetComponent<EdgeCollider2D>().enabled  =  false;
+            // GetComponent<SpriteRenderer>().enabled = false;
+            // Destroy(this.gameObject);
             resetPosition();
         }
     }

@@ -1,18 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class DodoController : MonoBehaviour
 {
-
-    public float rockEffect = 10;
-
+    private SpriteRenderer dodoSprite;
     private Rigidbody2D dodoBody;
-    private Animator dodoAnimator;
-
     public float maxSpeed;
     public float speed;
 
@@ -22,7 +16,8 @@ public class PlayerController : MonoBehaviour
     private float moveDown;
 
     private PlayerControls controls;
-    
+    private Animator dodoAnimator;
+
     void Awake()
     {
         controls = new PlayerControls();
@@ -49,46 +44,27 @@ public class PlayerController : MonoBehaviour
         controls.Gameplay.Disable();
     }
 
-
-    void  Start()
+    // Start is called before the first frame update
+    void Start()
     {
         // Set to be 30 FPS
-        Application.targetFrameRate =  30;
+        Application.targetFrameRate = 30;
+        dodoSprite = GetComponent<SpriteRenderer>();
         dodoBody = GetComponent<Rigidbody2D>();
         dodoAnimator = GetComponent<Animator>();
     }
 
-
-    // FixedUpdate may be called once per frame. See documentation for details.
-    void FixedUpdate(){
-        Vector2 direction = new Vector2(moveRight - moveLeft, moveUp - moveDown);
-        dodoBody.AddForce(direction * speed); 
-    }
-
-    void OnTriggerEnter2D(Collision2D col)
+    void FixedUpdate()
     {
-        if (col.gameObject.CompareTag("Eagle"))
-        {
-            Debug.Log("Player eaten by eagle!");
-        }
+        
     }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Rock"))
-        {
-            dodoBody.AddForce(Vector2.up * rockEffect, ForceMode2D.Impulse);
-        }
-
-    }
-
 
     // Update is called once per frame
     void Update()
     {
         Vector2 direction = new Vector2(moveRight - moveLeft, moveUp - moveDown);
         Debug.Log(direction);
-        // dodoBody.MovePosition(dodoBody.position + speed * direction * Time.fixedDeltaTime);
+        dodoBody.MovePosition(dodoBody.position + speed * direction * Time.fixedDeltaTime);
         if (moveRight > 0) {
             dodoAnimator.SetBool("moveRight", true);
             dodoAnimator.SetBool("moveLeft", false);

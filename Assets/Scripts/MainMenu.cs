@@ -10,7 +10,6 @@ public class MainMenu : MonoBehaviour
     private float moveRight;
     private float moveUp;
     private float moveDown;
-    public GameConstants gameConstants;
 
     private PlayerControls controls;
 
@@ -52,7 +51,7 @@ public class MainMenu : MonoBehaviour
 
 
    public void PlayGame(){
-       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
    }
    public void QuitGame(){
        Debug.Log("Quit game");

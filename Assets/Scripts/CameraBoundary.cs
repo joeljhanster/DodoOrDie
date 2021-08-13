@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class CameraBoundary : MonoBehaviour
 {
-    public GameConstants gameConstants;
     public float colThickness = 4f;
     public float zPosition = 0f;
     private Vector2 screenSize;
-
-    private float time = 0.0f;
-
-    private bool topRemoved = false;
-
-    private System.Collections.Generic.Dictionary<string,Transform> colliders;
  
     void Start ()
     {//Create a Dictionary to contain all our Objects/Transforms
-        colliders = new System.Collections.Generic.Dictionary<string,Transform>();
+        System.Collections.Generic.Dictionary<string,Transform> colliders = new System.Collections.Generic.Dictionary<string,Transform>();
     //Create our GameObjects and add their Transform components to the Dictionary we created above
         colliders.Add("Top",new GameObject().transform);
         colliders.Add("Bottom",new GameObject().transform);
@@ -56,16 +49,6 @@ public class CameraBoundary : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.fixedDeltaTime;
-
-        if (time > gameConstants.startDuration && !topRemoved) {
-            colliders["Top"].gameObject.SetActive(false);
-            topRemoved = true;
-        }
-    }
-
-    public void playerSurvivesResponse()
-    {
-        colliders["Bottom"].gameObject.SetActive(false);
+        
     }
 }
