@@ -9,12 +9,13 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 {
 
     public float rockEffect = 10;
-
+    private Vector3 dodoOriginalPosition;
     private Rigidbody2D dodoBody;
     private Animator dodoAnimator;
     private AudioSource dodoAudio;
     public AudioClip dodo_jump;
     public AudioClip dodo_death;
+    public GameObject dodoImage;
 
     private bool faceRightState = true;
     private bool onGroundState = true;
@@ -160,17 +161,26 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 
     void PlayerDiesSequence()
     {
+        dodoOriginalPosition = new Vector3(transform.position.x,transform.position.y+5,transform.position.z); 
         dodoAnimator.SetBool("isDead", true);
         dodoAudio.PlayOneShot(dodo_death);
         GetComponent<Collider2D>().enabled = false;
         dodoBody.AddForce(Vector2.up  *  30, ForceMode2D.Impulse);
-        dodoBody.gravityScale = 2;
+        // dodoBody.gravityScale = 2;
+        dodoImage.GetComponent<Renderer>().enabled = false;
         StartCoroutine(dead());
     }
 
     IEnumerator dead()
     {
-        yield return new WaitForSeconds(5.0f);
-        dodoBody.bodyType = RigidbodyType2D.Static;
+        // yield return new WaitForSeconds(5.0f);
+        // dodoBody.bodyType = RigidbodyType2D.Static;
+        yield return new WaitForSeconds(3.0f);
+        // dodoBody.bodyType = RigidbodyType2D.Static;
+        dodoAnimator.SetBool("isDead", false);
+        transform.position = dodoOriginalPosition;
+        GetComponent<Collider2D>().enabled = true;
+        dodoImage.GetComponent<Renderer>().enabled = true;
+        dodoBody.gravityScale = 1;
     }
 }
