@@ -20,8 +20,6 @@ public class RiverPlayerController : MonoBehaviour
     private float moveRight;
     private float moveUp;
     private float moveDown;
-    
-    private bool onGroundState = false;
 
     private PlayerControls controls;
     
@@ -34,11 +32,11 @@ public class RiverPlayerController : MonoBehaviour
         controls.Gameplay.MoveRight.performed += ctx => moveRight = ctx.ReadValue<float>();
         controls.Gameplay.MoveRight.canceled += ctx => moveRight = 0.0f;
 
-        // controls.Gameplay.MoveUp.performed += ctx => moveUp = ctx.ReadValue<float>();
-        // controls.Gameplay.MoveUp.canceled += ctx => moveUp = 0.0f;
+        controls.Gameplay.MoveUp.performed += ctx => moveUp = ctx.ReadValue<float>();
+        controls.Gameplay.MoveUp.canceled += ctx => moveUp = 0.0f;
 
-        // controls.Gameplay.MoveDown.performed += ctx => moveDown = ctx.ReadValue<float>();
-        // controls.Gameplay.MoveDown.canceled += ctx => moveDown = 0.0f;
+        controls.Gameplay.MoveDown.performed += ctx => moveDown = ctx.ReadValue<float>();
+        controls.Gameplay.MoveDown.canceled += ctx => moveDown = 0.0f;
     }
 
     void OnEnable()
@@ -67,14 +65,22 @@ public class RiverPlayerController : MonoBehaviour
         dodoBody.AddForce(direction * speed); 
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Rock"))
-        {
-            dodoBody.AddForce(Vector2.up * rockEffect, ForceMode2D.Impulse);
-        }
+    // void OnTriggerEnter2D(Collision2D col)
+    // {
+    //     if (col.gameObject.CompareTag("Eagle"))
+    //     {
+    //         Debug.Log("Player eaten by eagle!");
+    //     }
+    // }
 
-    }
+    // void OnCollisionEnter2D(Collision2D col)
+    // {
+    //     if (col.gameObject.CompareTag("Rock"))
+    //     {
+    //         dodoBody.AddForce(Vector2.up * rockEffect, ForceMode2D.Impulse);
+    //     }
+
+    // }
 
 
     // Update is called once per frame
@@ -89,15 +95,16 @@ public class RiverPlayerController : MonoBehaviour
         } else if (moveLeft > 0) {
             dodoAnimator.SetBool("moveRight", false);
             dodoAnimator.SetBool("moveLeft", true);
-        // } else if (moveUp > 0) {
-        //     dodoAnimator.SetBool("moveRight", false);
-        //     dodoAnimator.SetBool("moveLeft", false);
-        //     dodoAnimator.SetBool("moveUp", true);
-        // } else {
-        //     dodoAnimator.SetBool("moveRight", false);
-        //     dodoAnimator.SetBool("moveLeft", false);
-        //     dodoAnimator.SetBool("moveUp", false);
+        } else if (moveUp > 0) {
+            dodoAnimator.SetBool("moveRight", false);
+            dodoAnimator.SetBool("moveLeft", false);
+            dodoAnimator.SetBool("moveUp", true);
+        } else {
+            dodoAnimator.SetBool("moveRight", false);
+            dodoAnimator.SetBool("moveLeft", false);
+            dodoAnimator.SetBool("moveUp", false);
         }
     }
 }
+
 
