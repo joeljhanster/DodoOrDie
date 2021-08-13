@@ -5,13 +5,17 @@ using UnityEngine.UI;
 
 public class ScoreMonitor : MonoBehaviour
 {
-    public IntVariable woodCollected;
+    public List<DodoCharacter> dodoCharacters;
     public Text text;
 
     public void UpdateScore()
     {
         Debug.Log("Updating score");
-        text.text = "x " + woodCollected.Value.ToString();
+        string scoreText = "Scores: ";
+        foreach(DodoCharacter dodo in dodoCharacters) {
+            scoreText += "\n" + dodo.dodoName + ": " + dodo.score.ToString(); 
+        }
+        text.text = scoreText;
     }
 
     public void Start()

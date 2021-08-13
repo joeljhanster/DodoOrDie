@@ -29,14 +29,19 @@ public class Spawn : MonoBehaviour {
 
         float randomValue = Random.Range(0.0f, 1.0f);
 
-        if (woodResource && randomValue > 0.5f) {
-            Debug.Log(g.GetComponent<SpriteRenderer>().sprite.rect.width);
-            float logHalfWidth = g.GetComponent<SpriteRenderer>().sprite.rect.width / 2.3f;
+        if (woodResource && randomValue > 0.7f) {
+            // Debug.Log(g.GetComponent<SpriteRenderer>().sprite.rect.width);
+            Debug.Log(g.transform.localScale);
+            // Debug.Log(woodResource.transform.localScale);
+            // float logHalfWidth = g.GetComponent<SpriteRenderer>().sprite.rect.width / 2.3f;
+            float offset = 0.8f;
             GameObject wood = (GameObject) Instantiate(
                 woodResource,
-                new Vector3(g.transform.position.x, Random.Range(g.transform.position.y - logHalfWidth, g.transform.position.y + logHalfWidth), g.transform.position.z),
+                new Vector3(g.transform.position.x, Random.Range(g.transform.position.y - offset, g.transform.position.y + offset), g.transform.position.z),
                 Quaternion.Euler(vector3)
             );
+            Debug.Log(wood.transform.localScale);
+            wood.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
             wood.GetComponent<Rigidbody2D>().velocity = velocity;
         }
     }

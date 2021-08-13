@@ -58,6 +58,21 @@ public class DodoCharacter : ScriptableObject
         _score += amount;
     }
 
+    // Player starting score for each level
+    private int _startScore = 0;
+
+    public int startScore
+    {
+        get {
+            return _startScore;
+        }
+    }
+
+    public void SetStartScore(int startScore)
+    {
+        _startScore = startScore;
+    }
+
     // Player selected
     private bool _taken = false;
 

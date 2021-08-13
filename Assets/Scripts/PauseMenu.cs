@@ -1,35 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    private float moveUp;
-    private float moveDown;
+    public UnityEvent onRestartLevel;
+    // private float moveUp;
+    // private float moveDown;
     
-    private PlayerControls controls;
+    // private PlayerControls controls;
 
-    void Awake()
-    {
-        controls = new PlayerControls();
+    // void Awake()
+    // {
+    //     controls = new PlayerControls();
 
-        controls.Gameplay.MoveUp.performed += ctx => moveUp = ctx.ReadValue<float>();
-        controls.Gameplay.MoveUp.canceled += ctx => moveUp = 0.0f;
+    //     controls.Gameplay.MoveUp.performed += ctx => moveUp = ctx.ReadValue<float>();
+    //     controls.Gameplay.MoveUp.canceled += ctx => moveUp = 0.0f;
 
-        controls.Gameplay.MoveDown.performed += ctx => moveDown = ctx.ReadValue<float>();
-        controls.Gameplay.MoveDown.canceled += ctx => moveDown = 0.0f;
-    }
+    //     controls.Gameplay.MoveDown.performed += ctx => moveDown = ctx.ReadValue<float>();
+    //     controls.Gameplay.MoveDown.canceled += ctx => moveDown = 0.0f;
+    // }
 
-    void OnEnable()
-    {
-        controls.Gameplay.Enable();
-    }
+    // void OnEnable()
+    // {
+    //     controls.Gameplay.Enable();
+    // }
 
-    void OnDisable()
-    {
-        controls.Gameplay.Disable();
-    }
+    // void OnDisable()
+    // {
+    //     controls.Gameplay.Disable();
+    // }
 
     // Start is called before the first frame update
     void Start()
@@ -38,16 +40,16 @@ public class PauseMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (moveUp>0){
-            Debug.Log("pressed up");
-        }
-        else if (moveDown>0){
-           Debug.Log("pressed down");
+    // void Update()
+    // {
+    //     if (moveUp>0){
+    //         Debug.Log("pressed up");
+    //     }
+    //     else if (moveDown>0){
+    //        Debug.Log("pressed down");
             
-        }
-    }
+    //     }
+    // }
 
     public void ResumeGame()
     {
@@ -58,8 +60,10 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartLevel()
     {
-        Debug.Log("Restarting level");
+        Debug.Log("Restart level");
+        onRestartLevel.Invoke();
         Time.timeScale = 1;
+        // this.gameObject.SetActive(false);
     }
 
     public void BackMainMenu()
@@ -67,6 +71,7 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Back to main menu");
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1;
+        // this.gameObject.SetActive(false);
     }
 
     public void QuitGame()
@@ -74,5 +79,6 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Quit game");
         Application.Quit();
         Time.timeScale = 1;
+        // this.gameObject.SetActive(false);
     }
 }

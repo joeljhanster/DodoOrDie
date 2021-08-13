@@ -57,4 +57,10 @@ public class GameConstants : ScriptableObject
     public string riverScene = "3_River";
     public string bridgeScene = "4_Bridge";
     public string beachScene = "5_Beach";
+
+    // Cut Scenes
+    public string cutScene12 = "Game1TOGame2";
+    public string cutScene23 = "Game2TOGame3";
+    public string cutScene34 = "Game3TOGame4";
+    public string cutSceneFinal = "FinalCutScene";
 }

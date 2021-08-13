@@ -26,7 +26,7 @@ public class across : MonoBehaviour
             col.gameObject.CompareTag("RGBDodo")
         ) {
             congrataudio.Play();
-            // onSceneChange.Invoke();
+            onSceneChange.Invoke();
         }
 
     }

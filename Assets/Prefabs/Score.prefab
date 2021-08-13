@@ -61,6 +61,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 075751afe86c8554380a6ba048a8db12, type: 2}
   fullHeart: {fileID: 9200775849295203296, guid: 8c4984da75bf40d45a55ccc82443cc51, type: 3}
   emptyHeart: {fileID: -4997167023504409373, guid: 8c4984da75bf40d45a55ccc82443cc51, type: 3}
+  restartMenu: {fileID: 6812706972616881256, guid: 48867974724b79f4e826a0d4f650bf90, type: 3}
 --- !u!1 &8184270974078625412
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,9 +13,12 @@ public class LivesMonitor : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    public GameObject restartMenu;
+
     public void UpdateLives()
     {
         Debug.Log("Updating lives");
+        bool allDead = true;
         foreach(DodoCharacter dodo in dodoCharacters)
         {
             for (int i=0; i<gameConstants.startingLives; i++)
@@ -26,12 +29,16 @@ public class LivesMonitor : MonoBehaviour
                 {
                     if (i < dodo.lives && dodo.taken) {
                         life.GetComponent<Image>().sprite = fullHeart;
+                        allDead = false;
                     } else {
                         life.GetComponent<Image>().sprite = emptyHeart;
                     }
 
                 }
             }
+        }
+        if (allDead) {
+            restartMenu.SetActive(true);
         }
     }
 
