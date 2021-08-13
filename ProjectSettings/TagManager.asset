@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Enemy
   - Coin
+  - PirateBeard
   layers:
   - Default
   - TransparentFX

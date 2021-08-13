@@ -29,6 +29,8 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     private float moveDown;
     private float jump;
 
+    public bool alive = true;
+
     private PlayerControls controls;
     
     void Awake()
@@ -109,6 +111,10 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
             Debug.Log("Died");
             onGroundState = true; // back on ground
         }
+        if (col.gameObject.CompareTag("PirateBeard"))
+        {
+            CentralManager.centralManagerInstance.killPlayer();
+        }
         
     }
 
@@ -129,6 +135,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
             Debug.Log("Died");
             onGroundState = true; // back on ground
         }
+        
     }
 
 
@@ -161,14 +168,18 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 
     void PlayerDiesSequence()
     {
-        dodoOriginalPosition = new Vector3(transform.position.x,transform.position.y,transform.position.z); 
-        dodoAnimator.SetBool("isDead", true);
-        dodoAudio.PlayOneShot(dodo_death);
-        GetComponent<Collider2D>().enabled = false;
-        dodoBody.AddForce(Vector2.up  *  30, ForceMode2D.Impulse);
-        // dodoBody.gravityScale = 2;
-        dodoImage.GetComponent<Renderer>().enabled = false;
-        StartCoroutine(dead());
+        alive=false;
+        if (alive ==false){
+            dodoOriginalPosition = new Vector3(transform.position.x+5,transform.position.y,transform.position.z); 
+            dodoAnimator.SetBool("isDead", true);
+            dodoAudio.PlayOneShot(dodo_death);
+            GetComponent<Collider2D>().enabled = false;
+            dodoBody.AddForce(Vector2.up  *  30, ForceMode2D.Impulse);
+            // dodoBody.gravityScale = 2;
+            dodoImage.GetComponent<Renderer>().enabled = false;
+            StartCoroutine(dead());
+        }
+        alive = true;
     }
 
     IEnumerator dead()
@@ -181,6 +192,5 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         transform.position = dodoOriginalPosition;
         GetComponent<Collider2D>().enabled = true;
         dodoImage.GetComponent<Renderer>().enabled = true;
-        dodoBody.gravityScale = 1;
     }
 }
