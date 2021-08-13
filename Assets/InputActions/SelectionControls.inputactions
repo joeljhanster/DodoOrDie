@@ -63,28 +63,6 @@
                 },
                 {
                     "name": "",
-                    "id": "7e90aa9a-4bf8-4895-9b68-0bbffc871372",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Next",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6cc306c8-aa53-49af-8054-80ca9c32c3cd",
-                    "path": "<XInputController>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Next",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ff33126a-4821-4188-9f06-b23966c3fd19",
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
@@ -98,28 +76,6 @@
                     "name": "",
                     "id": "b45d4cf0-688c-4370-b2d3-31203e024769",
                     "path": "<Joystick>/stick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Prev",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3044a0e0-8d79-45c2-9ddb-2e9cbeaf5e8d",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Prev",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "aeb29cc3-41c0-4a99-8f83-83e572766336",
-                    "path": "<XInputController>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

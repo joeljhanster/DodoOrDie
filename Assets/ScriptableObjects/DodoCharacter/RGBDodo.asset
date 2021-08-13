@@ -15,4 +15,4 @@ MonoBehaviour:
   DeveloperDescription: 
   dodoName: RGB Dodo
   dodoSprite: {fileID: 7082305057169912700, guid: cafe3bddbd16e0e4ba90f93e87f25925, type: 3}
-  dodoScorePanel: {fileID: 2250520631563114834, guid: 7b1274d6a4c012f4abaffac3439df20d, type: 3}
+  dodoObject: {fileID: 684413786815499145, guid: 00f4003735546844daca80a800732ad0, type: 3}

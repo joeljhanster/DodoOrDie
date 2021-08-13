@@ -14,12 +14,10 @@ public class PlayerManager : MonoBehaviour
     public List<GameObject> selectionPanels;
 
     public List<DodoCharacter> dodoCharacters;
-    
-    public GameConstants gameConstants;
 
     public UnityEvent onSceneChange;
 
-    // public InputActionAsset playerControlsActions;
+    public InputActionAsset playerControlsActions;
     
     private List<PlayerConfiguration> playerConfigurations;
     
@@ -45,10 +43,10 @@ public class PlayerManager : MonoBehaviour
             playerConfigurations = new List<PlayerConfiguration>();
         }
 
-        foreach(DodoCharacter dodo in dodoCharacters)
+        for (int i=0; i<dodoCharacters.Count; i++)
         {
-            dodo.SetTaken(false);
-            dodo.SetInput(null);
+            dodoCharacters[i].SetTaken(false);
+            dodoCharacters[i].SetInput(null);
         }
     }
 
@@ -81,66 +79,41 @@ public class PlayerManager : MonoBehaviour
             playerConfigurations.Add(new PlayerConfiguration(pi));
         }
 
-        // GameObject optionsPanel = selectionPanels[pi.playerIndex].transform.Find("Options").gameObject;
-        // if (optionsPanel != null)
-        // {
-        //     optionsPanel.SetActive(true);
-        //     pi.uiInputModule = optionsPanel.GetComponentInChildren<InputSystemUIInputModule>();
-        //     PlayerSetupMenuController menuController = optionsPanel.GetComponent<PlayerSetupMenuController>();
-        //     menuController.SetPlayerInput(pi);
-        // }
+        GameObject optionsPanel = selectionPanels[pi.playerIndex].transform.Find("Options").gameObject;
+        if (optionsPanel != null)
+        {
+            optionsPanel.SetActive(true);
+            pi.uiInputModule = optionsPanel.GetComponentInChildren<InputSystemUIInputModule>();
+            PlayerSetupMenuController menuController = optionsPanel.GetComponent<PlayerSetupMenuController>();
+            menuController.SetPlayerInput(pi);
+        }
     }
 
     void Update()
     {
-        for (int i=0; i<playerInputManager.playerCount; i++) {
-            GameObject optionsPanel = selectionPanels[i].transform.Find("Options").gameObject;
-            if (optionsPanel && !optionsPanel.activeSelf)
-            {
-                optionsPanel.SetActive(true);
-                PlayerInput pi = playerConfigurations[i].Input;
-                pi.uiInputModule = optionsPanel.GetComponentInChildren<InputSystemUIInputModule>();
-                PlayerSetupMenuController menuController = optionsPanel.GetComponent<PlayerSetupMenuController>();
-                menuController.SetPlayerInput(pi);
-            }
-        }
-
-
         if (!changeScene) {
             int joinCount = playerInputManager.playerCount;
             int readyCount = 0;
-
-            foreach(DodoCharacter dodo in dodoCharacters)
+            for (int i=0; i<dodoCharacters.Count; i++)
             {
-                if (dodo.taken) {
+                if (dodoCharacters[i].taken) {
                     readyCount += 1;
-                    dodo.SetLives(gameConstants.startingLives);
-                } else {
-                    dodo.SetLives(0);
                 }
-                dodo.SetScore(0);
-                // if (dodo.taken) {
-                //     readyCount += 1;
-                //     Debug.Log("Set active true");
-                //     dodo.dodoScorePanel.SetActive(true);
-                // } else {
-                //     Debug.Log("Set active false");
-                //     dodo.dodoScorePanel.SetActive(false);
-                // }
             }
 
             if (readyCount == joinCount && joinCount >= 2) {
                 // Load next scene
                 onSceneChange.Invoke();
                 changeScene = true;
+
                 // Switch controls
-                // for (int i=0; i<dodoCharacters.Count; i++)
-                // {
-                //     dodoCharacters[i].Input.enabled = false;
-                //     dodoCharacters[i].Input.actions = playerControlsActions;
-                //     dodoCharacters[i].Input.enabled = true;
-                //     dodoCharacters[i].Input.SwitchCurrentActionMap("Gameplay");
-                // }
+                for (int i=0; i<dodoCharacters.Count; i++)
+                {
+                    dodoCharacters[i].Input.enabled = false;
+                    dodoCharacters[i].Input.actions = playerControlsActions;
+                    dodoCharacters[i].Input.enabled = true;
+                    dodoCharacters[i].Input.SwitchCurrentActionMap("Gameplay");
+                }
             }
         }
     }

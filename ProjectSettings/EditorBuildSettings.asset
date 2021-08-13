@@ -17,14 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2_Forest.unity
     guid: 5c199ee4a4a61d14791226c4df17525c
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/3_River.unity
+    guid: 3b4516baa5515594b82c5eadeef23830
   - enabled: 1
     path: Assets/Scenes/4_Bridge.unity
     guid: 567166787fcc4e94f8fa9cbfcf9ab73c
   - enabled: 1
     path: Assets/Scenes/5_Beach.unity
     guid: 49fecc71a6c4b34498f558757a6f6fe4
-  m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: d7ba1c768ad89d74abcaf74c0dec397e, type: 2}
+  m_configObjects: {}

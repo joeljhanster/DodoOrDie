@@ -15,4 +15,4 @@ MonoBehaviour:
   DeveloperDescription: 
   dodoName: Gold Dodo
   dodoSprite: {fileID: -6400291109563794331, guid: d86d351b41a844f4f960f2b95c092c1b, type: 3}
-  dodoScorePanel: {fileID: 9176827397326883448, guid: dc39b69e684ea0a4c9e6891d45ed1861, type: 3}
+  dodoObject: {fileID: 684413786815499145, guid: 00f4003735546844daca80a800732ad0, type: 3}

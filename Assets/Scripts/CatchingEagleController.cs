@@ -5,9 +5,7 @@ using UnityEngine;
 public class CatchingEagleController : MonoBehaviour
 {
     public GameConstants gameConstants;
-    // public Transform player;
-
-    public List<Transform> dodoObjects;
+    public Transform player;
 
     private SpriteRenderer eagleSprite;
     private Rigidbody2D eagleBody;
@@ -51,14 +49,6 @@ public class CatchingEagleController : MonoBehaviour
     }
 
     void chasePlayer() {
-        Transform player = null;
-
-        foreach(Transform dodo in dodoObjects) {
-            if (dodo.gameObject.activeSelf && (!player || dodo.position.y > player.position.y)) {
-                player = dodo;
-            }
-        }
-
         if (player.position.y > dangerZoneY && player.position.y < transform.position.y && Mathf.Abs(Camera.main.transform.position.x - player.position.x) < viewportHalfWidthX) {
             moveDistance = player.position.x - transform.position.x;
             chasing = true;

@@ -73,8 +73,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConstants: {fileID: 11400000, guid: 0592face385c93b4b8fb6d5258b192b0, type: 2}
-  dodoCharacters:
-  - {fileID: 11400000, guid: 65ef5ed5aa8dcbd4692242c15b32a6da, type: 2}
-  - {fileID: 11400000, guid: fae6c45a54ee2bb42973e3cb4eb68d54, type: 2}
-  - {fileID: 11400000, guid: f8b622af39612d140b378f6331b6df2b, type: 2}
-  - {fileID: 11400000, guid: 075751afe86c8554380a6ba048a8db12, type: 2}

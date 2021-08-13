@@ -55,18 +55,18 @@ public class Break : MonoBehaviour
     }
     void  OnTriggerEnter2D(Collider2D col)
     {
-        if ((
-            col.gameObject.CompareTag("FlowerDodo") || 
-            col.gameObject.CompareTag("GoldenDodo") ||
-            col.gameObject.CompareTag("PirateDodo") ||
-            col.gameObject.CompareTag("RGBDodo")
-        ) && !broken) {
+        if (col.gameObject.CompareTag("Player") &&  !broken){
             obstacleAudio.Play();
-            broken = true;
-            // assume we have 5 debris per rock
-            for (int x = 0; x < gameConstants.numDebris; x++) {
+            broken  =  true;
+            // assume we have 5 debris per box
+            for (int x = 0; x < gameConstants.numDebris; x++){
                 Instantiate(Debris, transform.position, Quaternion.identity);
             }
+            // gameObject.transform.GetComponent<SpriteRenderer>().enabled  =  false;
+            // gameObject.transform.GetComponent<BoxCollider2D>().enabled  =  false;
+            // GetComponent<EdgeCollider2D>().enabled  =  false;
+            // GetComponent<SpriteRenderer>().enabled = false;
+            // Destroy(this.gameObject);
             resetPosition();
         }
     }

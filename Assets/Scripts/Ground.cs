@@ -26,12 +26,7 @@ public class Ground : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if ((
-            col.gameObject.CompareTag("FlowerDodo") ||
-            col.gameObject.CompareTag("GoldenDodo") ||
-            col.gameObject.CompareTag("PirateDodo") ||
-            col.gameObject.CompareTag("RGBDodo")
-         ) && !hit) {
+        if (col.gameObject.CompareTag("Player") && !hit) {
             groundAudio.Play();
             // Throw leaves
 
