@@ -128,7 +128,7 @@ public class PlayerManager : MonoBehaviour
                 // }
             }
 
-            if (readyCount == joinCount && joinCount >= 2) {
+            if (readyCount == joinCount && joinCount >= 3) {
                 // Load next scene
                 onSceneChange.Invoke();
                 changeScene = true;

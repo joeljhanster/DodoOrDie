@@ -15,11 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/1_Cliff.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/2_Forest_Joel.unity
+    path: Assets/Scenes/2_Forest.unity
     guid: 5c199ee4a4a61d14791226c4df17525c
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/horizontal_river.unity
+    guid: 0b05d54798bd62b4e98c644895e9b0d7
   - enabled: 1
     path: Assets/Scenes/4_Bridge.unity
     guid: 567166787fcc4e94f8fa9cbfcf9ab73c

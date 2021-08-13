@@ -20,7 +20,6 @@ public class WoodReward : MonoBehaviour
     private AudioSource woodAudio;
     private float topY;
     private bool collected = false;
-    private int score = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +66,7 @@ public class WoodReward : MonoBehaviour
                 woodAudio.Play();
 
                 // Add score to dodo
-                flowerDodo.AddScore(score);
+                flowerDodo.AddScore(gameConstants.score);
 
                 onWoodCollected.Invoke();
 
@@ -80,7 +79,7 @@ public class WoodReward : MonoBehaviour
                 woodAudio.Play();
 
                 // Add score to dodo
-                goldenDodo.AddScore(score);
+                goldenDodo.AddScore(gameConstants.score);
 
                 onWoodCollected.Invoke();
 
@@ -93,7 +92,7 @@ public class WoodReward : MonoBehaviour
                 woodAudio.Play();
 
                 // Add score to dodo
-                pirateDodo.AddScore(score);
+                pirateDodo.AddScore(gameConstants.score);
 
                 onWoodCollected.Invoke();
 
@@ -106,7 +105,7 @@ public class WoodReward : MonoBehaviour
                 woodAudio.Play();
 
                 // Add score to dodo
-                rgbDodo.AddScore(score);
+                rgbDodo.AddScore(gameConstants.score);
 
                 onWoodCollected.Invoke();
 

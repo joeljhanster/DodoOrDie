@@ -14,18 +14,17 @@ public class GameConstants : ScriptableObject
 
     public int immunityDuration = 3;
 
-    // Thin Dodo
+    public int score = 100;
+
+    // Mini game 1: Cliff
     public float maxSpeed = 5.0f;
     public float speed = 70.0f;
 
-    // Naughty Dodo
-
-    
-    // Gastric Dodo
-
-
-    // Chubby Dodo
-
+    // Mini game 2: Forest
+    public float maxSpeedForest = 20.0f;
+    public float speedForest = 30.0f;
+    public float upForceForest = 20.0f;
+    public float dieUpForceForest = 30.0f;
 
     // Used in CliffScroller.cs
     public float cliffStartSpeed = 1.0f;

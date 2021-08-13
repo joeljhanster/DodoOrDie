@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1775154141021362703}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.19, y: 3.9, z: 9.037793}
-  m_LocalScale: {x: 0.70414, y: 0.70414, z: 0.70414}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 1775154141480437461}
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7095194215671436108, guid: 09b6f975e81d54a03bfc2bdb7840592f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9fecb6b0dfc26c4386f0b699ae3b52e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,18 +100,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008699179, y: -0.03375542}
+  m_Offset: {x: 0, y: 0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 5.17, y: 4.17}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45801854, y: 0.72995496}
+  m_Size: {x: 4.6, y: 3.5}
   m_EdgeRadius: 0
 --- !u!82 &5643810398169562113
 AudioSource:
@@ -221,6 +221,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b3d222e775f4712b3ca59e01e3d68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: 0592face385c93b4b8fb6d5258b192b0, type: 2}
+  onWoodCollected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: fa27294e5a8aaf34ea7a6b539b60f7ac, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  flowerDodo: {fileID: 11400000, guid: 65ef5ed5aa8dcbd4692242c15b32a6da, type: 2}
+  goldenDodo: {fileID: 11400000, guid: fae6c45a54ee2bb42973e3cb4eb68d54, type: 2}
+  pirateDodo: {fileID: 11400000, guid: f8b622af39612d140b378f6331b6df2b, type: 2}
+  rgbDodo: {fileID: 11400000, guid: 075751afe86c8554380a6ba048a8db12, type: 2}
 --- !u!1 &1775154141480437462
 GameObject:
   m_ObjectHideFlags: 0

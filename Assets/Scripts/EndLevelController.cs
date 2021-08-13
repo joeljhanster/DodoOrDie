@@ -18,7 +18,12 @@ public class EndLevelController : MonoBehaviour
         
     }
     void  OnTriggerEnter2D(Collider2D other){
-        if (other.gameObject.tag  ==  "Player"){
+        if (
+            other.gameObject.CompareTag("FlowerDodo") || 
+            other.gameObject.CompareTag("GoldenDodo") ||
+            other.gameObject.CompareTag("PirateDodo") ||
+            other.gameObject.CompareTag("RGBDodo")
+        ){
             string currScene = SceneManager.GetActiveScene().name;
             Debug.Log(currScene);
             Debug.Log("Level Ended!");

@@ -24,17 +24,37 @@ public class BlanketBombController : MonoBehaviour
 
     void  OnTriggerEnter2D(Collider2D other){
 		// check if it collides with player
-		if (other.gameObject.tag  ==  "Player"){
+		// if (other.gameObject.tag  ==  "Player"){
+        //     Debug.Log("Blanket Bomb Start!");
+        //     triggered = true;
+		// }
+
+        if (
+            other.gameObject.CompareTag("FlowerDodo") ||
+            other.gameObject.CompareTag("GoldenDodo") ||
+            other.gameObject.CompareTag("PirateDodo") ||
+            other.gameObject.CompareTag("RGBDodo")    
+        ) {
             Debug.Log("Blanket Bomb Start!");
             triggered = true;
-		}
+        }
 	}
     void  OnTriggerExit2D(Collider2D other){
 		// check if it collides with player
-		if (other.gameObject.tag  ==  "Player"){
+		// if (other.gameObject.tag  ==  "Player"){
+        //     Debug.Log("Blanket Bomb End!");
+        //     triggered = false;
+		// }
+
+        if (
+            other.gameObject.CompareTag("FlowerDodo") ||
+            other.gameObject.CompareTag("GoldenDodo") ||
+            other.gameObject.CompareTag("PirateDodo") ||
+            other.gameObject.CompareTag("RGBDodo")    
+        ) {
             Debug.Log("Blanket Bomb End!");
             triggered = false;
-		}
+        }
 	}
 
     IEnumerator SpawnBananas(){
