@@ -12,10 +12,12 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     private Vector3 dodoOriginalPosition;
     private Rigidbody2D dodoBody;
     private Animator dodoAnimator;
+    private Animator eggAnimator;
     private AudioSource dodoAudio;
     public AudioClip dodo_jump;
     public AudioClip dodo_death;
     public GameObject dodoImage;
+    public GameObject egg;
 
     private bool faceRightState = true;
     private bool onGroundState = true;
@@ -28,6 +30,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     private float moveUp;
     private float moveDown;
     private float jump;
+    private float action;
 
     public bool alive = true;
 
@@ -50,6 +53,10 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 
         controls.Gameplay.Jump.performed += ctx => jump = ctx.ReadValue<float>();
         controls.Gameplay.Jump.canceled += ctx => jump = 0.0f;
+
+        controls.Gameplay.Action.performed += ctx => action = ctx.ReadValue<float>();
+        controls.Gameplay.Action.canceled += ctx => action = 0.0f;
+        
     }
 
     void OnEnable()
@@ -69,6 +76,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         Application.targetFrameRate =  30;
         dodoBody = GetComponent<Rigidbody2D>();
         dodoAnimator = GetComponent<Animator>();
+        eggAnimator = GetComponent<Animator>();
         dodoAudio = GetComponent<AudioSource>();
         GameManager.OnPlayerDeath += PlayerDiesSequence;
     }
@@ -97,6 +105,10 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
             PlayJumpSound();
             dodoBody.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
             onGroundState = false;
+        }
+        
+        if (action > 0){
+            Instantiate(egg,transform.position,Quaternion.identity);
         }
     }
 
