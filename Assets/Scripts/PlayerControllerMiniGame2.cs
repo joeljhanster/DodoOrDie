@@ -170,7 +170,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     {
         alive=false;
         if (alive ==false){
-            dodoOriginalPosition = new Vector3(transform.position.x+5,transform.position.y,transform.position.z); 
+            dodoOriginalPosition = new Vector3(transform.position.x,transform.position.y,transform.position.z); 
             dodoAnimator.SetBool("isDead", true);
             dodoAudio.PlayOneShot(dodo_death);
             GetComponent<Collider2D>().enabled = false;
