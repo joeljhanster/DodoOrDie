@@ -5,7 +5,7 @@ public class Platform : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D coll) {
         // Frog? Then make it a Child
-        if (coll.name == "Player")
+        if (coll.tag == "Player")
             coll.transform.parent = transform;
     }
 

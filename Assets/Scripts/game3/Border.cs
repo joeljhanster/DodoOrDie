@@ -13,7 +13,7 @@ public class Border : MonoBehaviour {
 
     }
     void OnTriggerEnter2D(Collider2D coll) {
-        if (coll.name == "Player")
+        if (coll.tag == "Player")
             // coll.transform.parent = null;     
             respawn();
     }

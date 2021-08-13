@@ -13,14 +13,14 @@ public class across : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D coll) {
-        if (coll.name == "Player"){
+        if (coll.tag == "Player"){
             congrataudio.PlayOneShot(congrataudio.clip);
         }
     }
     // Update is called once per frame
     void OnTriggerStay2D(Collider2D coll) {
         // Frog? Then make it a Child
-        if (coll.name == "Player"){
+        if (coll.tag == "Player"){
             coll.transform.parent = transform;
 
         }

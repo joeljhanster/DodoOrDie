@@ -38,14 +38,14 @@ public class crocoController : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerStay2D(Collider2D coll) {
         // Frog? Then make it a Child
-        if (coll.name == "Player"){
+        if (coll.tag == "Player"){
             coll.transform.parent = transform;
             hitdodo = true;
         }
     }
 
     void OnTriggerExit2D(Collider2D coll) {
-        if (coll.name == "Player"){
+        if (coll.tag == "Player"){
             coll.transform.parent = null;  
             hitdodo = false;     
         } 
