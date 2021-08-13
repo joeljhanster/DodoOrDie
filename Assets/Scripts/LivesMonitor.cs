@@ -33,7 +33,6 @@ public class LivesMonitor : MonoBehaviour
                     } else {
                         life.GetComponent<Image>().sprite = emptyHeart;
                     }
-
                 }
             }
         }

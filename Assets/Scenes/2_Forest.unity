@@ -481,6 +481,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LivesEventListener
       objectReference: {fileID: 0}
+    - target: {fileID: 4060506850828984005, guid: 20133f7ee8ce07245b2aae4474add946, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1811439221}
+    - target: {fileID: 4060506850828984005, guid: 20133f7ee8ce07245b2aae4474add946, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateLives
+      objectReference: {fileID: 0}
     - target: {fileID: 4060506850828984010, guid: 20133f7ee8ce07245b2aae4474add946, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -6369,6 +6377,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1900813843}
     m_Modifications:
+    - target: {fileID: 1173366616194850926, guid: cccc249ff7de50a499aa801549a1d9d6, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3951835424377454066, guid: cccc249ff7de50a499aa801549a1d9d6, type: 3}
       propertyPath: m_Name
       value: RestartLevel
@@ -6412,6 +6424,18 @@ PrefabInstance:
     - target: {fileID: 7269102382946924547, guid: cccc249ff7de50a499aa801549a1d9d6, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7269102382946924547, guid: cccc249ff7de50a499aa801549a1d9d6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7269102382946924547, guid: cccc249ff7de50a499aa801549a1d9d6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7269102382946924547, guid: cccc249ff7de50a499aa801549a1d9d6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7269102382946924547, guid: cccc249ff7de50a499aa801549a1d9d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10765,6 +10789,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreEventListener
       objectReference: {fileID: 0}
+    - target: {fileID: 9157802051009631088, guid: 862d221a935221445ad0baa97674bfcc, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1811439221}
+    - target: {fileID: 9157802051009631088, guid: 862d221a935221445ad0baa97674bfcc, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateScore
+      objectReference: {fileID: 0}
     - target: {fileID: 9157802051009631090, guid: 862d221a935221445ad0baa97674bfcc, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -14399,6 +14431,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8184270973272759469, guid: dc8b3340c86ac57488ebbec986973aa7, type: 3}
   m_PrefabInstance: {fileID: 1811439219}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1811439221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8184270973272759470, guid: dc8b3340c86ac57488ebbec986973aa7, type: 3}
+  m_PrefabInstance: {fileID: 1811439219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d761be074761a4cbc4174d0b647054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1816912377
 GameObject:
   m_ObjectHideFlags: 0
