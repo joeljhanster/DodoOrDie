@@ -7,6 +7,7 @@ public class PirateController : MonoBehaviour
     private Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private AudioSource audioSource;
     public Transform target;
     private Vector3 currentPos;
     private Vector3 dodoPos;
@@ -20,6 +21,7 @@ public class PirateController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         // currentPos = transform.position;
         // dodoPos = dodoPlayer.position;
@@ -31,11 +33,10 @@ public class PirateController : MonoBehaviour
         float dist = Vector3.Distance(target.transform.position,transform.position);
         if (dist > attackRadius)
         {
-            animator.SetBool("xAttack",false);
             float step =  speed * Time.deltaTime;
-            Debug.Log("current pos: "+ transform.position);
-            Debug.Log("dodo pos: "+ target.position);
-            Debug.Log("new pos: "+Vector3.MoveTowards(transform.position,target.transform.position, step));
+            // Debug.Log("current pos: "+ transform.position);
+            // Debug.Log("dodo pos: "+ target.position);
+            // Debug.Log("new pos: "+Vector3.MoveTowards(transform.position,target.transform.position, step));
             animator.SetFloat("xSpeed", Mathf.Abs(rigidBody.velocity.x));
             animator.SetBool("xAttack",false);
             transform.position = Vector3.MoveTowards(transform.position,target.transform.position, step);
