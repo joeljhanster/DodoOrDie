@@ -15,4 +15,4 @@ MonoBehaviour:
   DeveloperDescription: 
   dodoName: Flower Dodo
   dodoSprite: {fileID: -4959098173739027380, guid: 483d2ee802c9c9049b13d34320b1b861, type: 3}
-  dodoObject: {fileID: 684413786815499145, guid: 00f4003735546844daca80a800732ad0, type: 3}
+  dodoScorePanel: {fileID: 6861042830088941429, guid: 85ce6d0eb4e5ef04582eec9e9f3011d1, type: 3}

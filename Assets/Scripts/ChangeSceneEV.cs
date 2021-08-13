@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ChangeSceneEV : MonoBehaviour
 {
     public GameConstants gameConstants;
+    public List<DodoCharacter> dodoCharacters;
 
     public void ChangeScene()
     {
@@ -16,6 +17,12 @@ public class ChangeSceneEV : MonoBehaviour
             nextScene = gameConstants.selectScene;
         } else if (currScene == gameConstants.selectScene) {
             nextScene = gameConstants.cliffScene;
+            
+            // Reset score
+            foreach(DodoCharacter dodo in dodoCharacters)
+            {
+                dodo.SetScore(0);
+            }
         } else if (currScene == gameConstants.cliffScene) {
             nextScene = gameConstants.forestScene;
         } else if (currScene == gameConstants.forestScene) {
@@ -26,6 +33,16 @@ public class ChangeSceneEV : MonoBehaviour
             nextScene = gameConstants.beachScene;
         } else {
             nextScene = currScene;
+        }
+
+        // Reset lives
+        foreach(DodoCharacter dodo in dodoCharacters)
+        {
+            if (dodo.taken) {
+                dodo.SetLives(gameConstants.startingLives);
+            } else {
+                dodo.SetLives(0);
+            }
         }
 
         StartCoroutine(LoadScene(nextScene));
