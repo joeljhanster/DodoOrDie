@@ -14,6 +14,7 @@ public class PirateController : MonoBehaviour
     private bool faceRight = true;
     public float attackRadius = 2.0f;
     public float speed;
+    public bool called = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,12 @@ public class PirateController : MonoBehaviour
         else
         {
             animator.SetBool("xAttack",true);
+            if (called==false){
+                CentralManager.centralManagerInstance.killPlayer();
+                called = true;
+            }
+            // 
+            Debug.Log("Player dieds");
         }
 
     }

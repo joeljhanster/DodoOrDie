@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private float moveRight;
     private float moveUp;
     private float moveDown;
+    private float jump;
 
     private PlayerControls controls;
     
@@ -37,6 +38,9 @@ public class PlayerController : MonoBehaviour
 
         controls.Gameplay.MoveDown.performed += ctx => moveDown = ctx.ReadValue<float>();
         controls.Gameplay.MoveDown.canceled += ctx => moveDown = 0.0f;
+
+        controls.Gameplay.Jump.performed += ctx => jump = ctx.ReadValue<float>();
+        controls.Gameplay.Jump.canceled += ctx => jump = 0.0f;
     }
 
     void OnEnable()
@@ -65,7 +69,7 @@ public class PlayerController : MonoBehaviour
         dodoBody.AddForce(direction * speed); 
     }
 
-    void OnTriggerEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Eagle"))
         {
