@@ -29,6 +29,10 @@ public class GameConstants : ScriptableObject
     // Mini game 3: River
     public float speedRiver = 0.1f;
 
+    // Mini game 4: Beach
+    public float speedBeach = 20.0f;
+    public float maxSpeedBeach = 7.0f;
+
     // Used in CliffScroller.cs
     public float cliffStartSpeed = 1.0f;
     public float mistStartSpeed = 1.0f;

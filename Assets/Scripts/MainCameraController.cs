@@ -12,6 +12,11 @@ public class MainCameraController : MonoBehaviour
     private  float startX; // smallest x-coordinate of the Camera
     private  float endX; // largest x-coordinate of the camera
     private  float viewportHalfWidth;
+    private float viewportHalfHeight;
+
+    private Vector3 bottomLeft;
+
+    private float originalX;
 
 
     // override  public  void  Awake(){
@@ -25,14 +30,16 @@ public class MainCameraController : MonoBehaviour
     {
         // get coordinate of the bottomleft of the viewport
 	    // z doesn't matter since the camera is orthographic
-	    Vector3 bottomLeft =  Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
+	    bottomLeft =  Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
 	    viewportHalfWidth  =  Mathf.Abs(bottomLeft.x  -  this.transform.position.x);
-
+        viewportHalfHeight = Mathf.Abs(bottomLeft.y  -  this.transform.position.y);
+        
 	    // offset  =  this.transform.position.x  -  player.position.x;
         offset  =  this.transform.position.x  -  players[0].position.x;
 	    startX  =  startLimit.transform.position.x  +  viewportHalfWidth;
 	    endX  =  endLimit.transform.position.x  -  viewportHalfWidth;
         
+        originalX = this.transform.position.x;
     }
 
     // Update is called once per frame
@@ -42,14 +49,24 @@ public class MainCameraController : MonoBehaviour
         int activeDodoCount = 0;
         foreach(Transform dodo in players)
         {
-            if (dodo.gameObject.activeSelf) {
+            if (
+                dodo.gameObject.activeSelf &&
+                dodo.gameObject.transform.position.y > bottomLeft.y &&
+                dodo.gameObject.transform.position.y < bottomLeft.y + 3 * viewportHalfHeight
+            ) {
                 activeDodoCount += 1;
                 positionX += dodo.position.x;
             }
         }
-        // float desiredX = (positionX / activeDodoCount) + offset;
-        float desiredX = (positionX / activeDodoCount); // center of all dodos
+        float desiredX;
         float targetX;
+
+        // float desiredX = (positionX / activeDodoCount) + offset;
+        if (activeDodoCount > 0) {
+            desiredX = (positionX / activeDodoCount); // center of all dodos
+        } else {
+            desiredX = transform.position.x;
+        }
 
         if (desiredX < startX) {
             targetX = startX;

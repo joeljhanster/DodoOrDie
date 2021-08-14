@@ -17,6 +17,7 @@ public class Spawn : MonoBehaviour {
     }
 
     void SpawnNext() {
+        Debug.Log(this.gameObject.name);
         // Instantiate
         GameObject g =(GameObject)Instantiate(
             prefab,

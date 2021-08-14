@@ -9,13 +9,16 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 {
 
     public float rockEffect = 10;
-
+    private Vector3 dodoOriginalPosition;
     private Rigidbody2D dodoBody;
     private Animator dodoAnimator;
+    private Animator eggAnimator;
     private AudioSource dodoAudio;
     public AudioClip dodo_jump;
     public AudioClip dodo_death;
-    private Vector3 dodoOriginalPosition;
+    public GameObject dodoImage;
+    public GameObject egg;
+
     private bool faceRightState = true;
     private bool onGroundState = true;
     public float maxSpeed = 20;
@@ -27,6 +30,9 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
     private float moveUp;
     private float moveDown;
     private float jump;
+    private float action;
+
+    public bool alive = true;
 
     private PlayerControls controls;
     
@@ -47,6 +53,10 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 
         controls.Gameplay.Jump.performed += ctx => jump = ctx.ReadValue<float>();
         controls.Gameplay.Jump.canceled += ctx => jump = 0.0f;
+
+        controls.Gameplay.Action.performed += ctx => action = ctx.ReadValue<float>();
+        controls.Gameplay.Action.canceled += ctx => action = 0.0f;
+        
     }
 
     void OnEnable()
@@ -66,6 +76,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         Application.targetFrameRate =  30;
         dodoBody = GetComponent<Rigidbody2D>();
         dodoAnimator = GetComponent<Animator>();
+        eggAnimator = GetComponent<Animator>();
         dodoAudio = GetComponent<AudioSource>();
         GameManager.OnPlayerDeath += PlayerDiesSequence;
     }
@@ -92,9 +103,14 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         if ((jump > 0) && onGroundState)
         {
             PlayJumpSound();
-            // dodoAnimator.SetBool("moveUp", true);            
             dodoBody.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
             onGroundState = false;
+        }
+        
+        if (action > 0){
+            GameObject newObject = Instantiate(egg,transform.position,Quaternion.identity) as GameObject;
+            newObject.transform.localScale = new Vector3(0.07045084f, 0.07045084f, 0.07045084f);
+
         }
     }
 
@@ -104,9 +120,14 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
         {
             Debug.Log("Player eaten by eagle!");
         }
-        if (col.gameObject.CompareTag("EndLevel"))
+        if (col.gameObject.CompareTag("Enemy"))
         {
-            dodoBody.bodyType = RigidbodyType2D.Static;
+            Debug.Log("Died");
+            onGroundState = true; // back on ground
+        }
+        if (col.gameObject.CompareTag("PirateBeard"))
+        {
+            CentralManager.centralManagerInstance.killPlayer();
         }
         
     }
@@ -123,17 +144,21 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
             Debug.Log("Collision with Ground!");
             onGroundState = true; // back on ground
         }
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Died");
+            onGroundState = true; // back on ground
+        }
+        
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log("moveLeft: " + moveLeft);
-        // Debug.Log("moveRight: " + moveRight);
+
         // toggle state
-        if (dodoBody.velocity.normalized.x < 0) {
-        // ((moveLeft > moveRight) && (moveLeft >  0)){
+        if ((moveLeft > moveRight) && (moveLeft >  0)){
             // faceRightState = false;
             dodoAnimator.SetBool("moveRight", false);
             dodoAnimator.SetBool("moveLeft", true);
@@ -141,8 +166,7 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
             // marioSprite.flipX = true;
         }
 
-        if (dodoBody.velocity.normalized.x > 0) {
-        // ((moveRight > moveLeft) && (moveRight >  0)){
+        if ((moveRight > moveLeft) && (moveRight >  0)){
             // faceRightState = true;
             dodoAnimator.SetBool("moveRight", true);
             dodoAnimator.SetBool("moveLeft", false);
@@ -158,23 +182,29 @@ public class PlayerControllerMiniGame2 : MonoBehaviour
 
     void PlayerDiesSequence()
     {
-        dodoOriginalPosition = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
-        dodoAnimator.SetBool("isDead", true);
-        dodoAudio.PlayOneShot(dodo_death);
-        GetComponent<Collider2D>().enabled = false;
-        dodoBody.AddForce(Vector2.up  *  30, ForceMode2D.Impulse);
-        dodoBody.gravityScale = 2;
-        StartCoroutine(dead());
-        // dodoBody.position = dodoOriginalPosition;
+        alive=false;
+        if (alive ==false){
+            dodoOriginalPosition = new Vector3(transform.position.x,transform.position.y,transform.position.z); 
+            dodoAnimator.SetBool("isDead", true);
+            dodoAudio.PlayOneShot(dodo_death);
+            GetComponent<Collider2D>().enabled = false;
+            dodoBody.AddForce(Vector2.up  *  30, ForceMode2D.Impulse);
+            // dodoBody.gravityScale = 2;
+            dodoImage.GetComponent<Renderer>().enabled = false;
+            StartCoroutine(dead());
+        }
+        alive = true;
     }
 
     IEnumerator dead()
     {
+        // yield return new WaitForSeconds(5.0f);
+        // dodoBody.bodyType = RigidbodyType2D.Static;
         yield return new WaitForSeconds(3.0f);
         // dodoBody.bodyType = RigidbodyType2D.Static;
         dodoAnimator.SetBool("isDead", false);
         transform.position = dodoOriginalPosition;
         GetComponent<Collider2D>().enabled = true;
-        dodoBody.gravityScale = 1;
+        dodoImage.GetComponent<Renderer>().enabled = true;
     }
 }

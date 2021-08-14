@@ -26,9 +26,10 @@ public class ChangeSceneEV : MonoBehaviour
         if (currScene == gameConstants.menuScene) {
             nextScene = gameConstants.selectScene;
         } else if (currScene == gameConstants.selectScene) {
-            // nextScene = gameConstants.cliffScene;
+            nextScene = gameConstants.cliffScene;
             // nextScene = gameConstants.forestScene;
-            nextScene = gameConstants.riverScene;
+            // nextScene = gameConstants.riverScene;
+            // nextScene = gameConstants.beachScene;
             
             // Reset score
             foreach(DodoCharacter dodo in dodoCharacters)

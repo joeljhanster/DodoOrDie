@@ -24,6 +24,8 @@ MonoBehaviour:
   upForceForest: 20
   dieUpForceForest: 30
   speedRiver: 0.1
+  speedBeach: 60
+  maxSpeedBeach: 10
   cliffStartSpeed: 1
   mistStartSpeed: 1
   cliffMaxSpeed: 7
@@ -40,3 +42,7 @@ MonoBehaviour:
   riverScene: 3_River
   bridgeScene: 4_Bridge
   beachScene: 5_Beach
+  cutScene12: Game1TOGame2
+  cutScene23: Game2TOGame3
+  cutScene34: Game3TOGame4
+  cutSceneFinal: FinalCutScene
