@@ -1,31 +1,7 @@
 fileFormatVersion: 2
-guid: 568ae29732c2a1345aab021a8002aec3
+guid: fa3aefa2960f28a419478ec71a1e8725
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 6701447654492312446
-    second: eagle_topview_0
-  - first:
-      213: -7602073279419222556
-    second: eagle_topview_1
-  - first:
-      213: -3201180048329663987
-    second: eagle_topview_2
-  - first:
-      213: -7440576863200783776
-    second: eagle_topview_3
-  - first:
-      213: 3416209794733169875
-    second: eagle_topview_4
-  - first:
-      213: 4029949210518256820
-    second: eagle_topview_5
-  - first:
-      213: 5744985767632158793
-    second: eagle_topview_6
-  - first:
-      213: 7216040068467838902
-    second: eagle_topview_7
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -65,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -99,189 +75,9 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: eagle_topview_0
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 259
-        width: 122
-        height: 71
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7393eec223500d50800000000000000
-      internalID: 6701447654492312446
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eagle_topview_1
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 128
-        width: 128
-        height: 77
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e57abf31a2008690800000000000000
-      internalID: -7602073279419222556
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eagle_topview_2
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 0
-        width: 256
-        height: 77
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d0a1e35e4bf1393d0800000000000000
-      internalID: -3201180048329663987
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eagle_topview_3
-      rect:
-        serializedVersion: 2
-        x: 257
-        y: 5
-        width: 128
-        height: 67
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0625de8c3c2cdb890800000000000000
-      internalID: -7440576863200783776
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eagle_topview_4
-      rect:
-        serializedVersion: 2
-        x: 385
-        y: 0
-        width: 256
-        height: 77
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3dcd74d55b0d86f20800000000000000
-      internalID: 3416209794733169875
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eagle_topview_5
-      rect:
-        serializedVersion: 2
-        x: 644
-        y: 3
-        width: 122
-        height: 71
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4bc7ec394714de730800000000000000
-      internalID: 4029949210518256820
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eagle_topview_6
-      rect:
-        serializedVersion: 2
-        x: 777
-        y: 6
-        width: 116
-        height: 67
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 940c36f0e1a4abf40800000000000000
-      internalID: 5744985767632158793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eagle_topview_7
-      rect:
-        serializedVersion: 2
-        x: 900
-        y: 3
-        width: 122
-        height: 71
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6bfc206c536842460800000000000000
-      internalID: 7216040068467838902
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []

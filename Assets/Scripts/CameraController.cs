@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public  Transform player; // Mario's Transform
+    // public  Transform player; // Mario's Transform
+
+    public List<Transform> players;
     public  Transform endLimit; // GameObject that indicates end of map
     public  Transform startLimit; // GameObject that indicates end of map
     private  float offset; // initial x-offset between camera and Mario
@@ -23,7 +25,8 @@ public class CameraController : MonoBehaviour
 	    Vector3 bottomLeft =  Camera.main.ViewportToWorldPoint(new  Vector3(0, 0, 0));
 	    viewportHalfWidth  =  Mathf.Abs(bottomLeft.x  -  this.transform.position.x);
 
-	    offset  =  this.transform.position.x  -  player.position.x;
+	    // offset  =  this.transform.position.x  -  player.position.x;
+        offset  =  this.transform.position.x  -  players[0].position.x;
 	    startX  =  startLimit.transform.position.x  +  viewportHalfWidth;
 	    endX  =  endLimit.transform.position.x  -  viewportHalfWidth;
         
@@ -32,7 +35,13 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float desiredX =  player.position.x  +  offset;
+        float positionX = 0;
+        foreach(Transform dodo in players)
+        {
+            positionX += dodo.position.x;
+        }
+        float desiredX = (positionX / players.Count) + offset;
+        // float desiredX =  player.position.x  +  offset;
         // check if desiredX is within startX and endX
         if (desiredX  >  startX  &&  desiredX  <  endX){
             this.transform.position  =  new  Vector3(desiredX, this.transform.position.y, this.transform.position.z);

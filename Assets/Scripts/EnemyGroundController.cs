@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyGroundController : MonoBehaviour
 {
+	public UnityEvent onPlayerEaten;
+
+	public DodoCharacter flowerDodo;
+    public DodoCharacter goldenDodo;
+    public DodoCharacter pirateDodo;
+    public DodoCharacter rgbDodo;
+
     private  int moveRight;
 	private  float originalX;
 	private  Vector2 velocity;
@@ -70,36 +78,101 @@ public class EnemyGroundController : MonoBehaviour
 
     void  OnTriggerEnter2D(Collider2D other){
 		// check if it collides with player
-		if (other.gameObject.tag  ==  "Player"){
-            Debug.Log("Collided with Player");
-			// check if collides on top
-			float yoffset = (other.transform.position.y  -  this.transform.position.y);
+		// if (other.gameObject.tag  ==  "Player"){
+        //     Debug.Log("Collided with Player");
+		// 	// check if collides on top
+		// 	float yoffset = (other.transform.position.y  -  this.transform.position.y);
+        //     Debug.Log("y offset: " + yoffset);
+		// 	if (yoffset  >  0.34f){
+        //         Debug.Log("Kill Enemy");
+		// 		KillSelf();
+		// 	}
+		// 	else{
+        //         Debug.Log("Kill Player");
+		// 		// Kill Player
+		// 		CentralManager.centralManagerInstance.killPlayer();
+		// 	}
+		// }
+
+		if (other.gameObject.CompareTag("FlowerDodo")) {
+            Debug.Log("Sky monkey collided with flower dodo");
+            // check if collides on top
+            float yoffset = (other.transform.position.y - this.transform.position.y);
             Debug.Log("y offset: " + yoffset);
-			if (yoffset  >  0.64f){
+            if (yoffset > 0.34f) {
                 Debug.Log("Kill Enemy");
-				KillSelf();
-			}
-			else{
+                KillSelf();
+            }
+            else if (!other.gameObject.GetComponent<DodoController2>().getImmunity()) {
                 Debug.Log("Kill Player");
-				// Kill Player
-				CentralManager.centralManagerInstance.killPlayer();
-			}
-		}
+                flowerDodo.AddLives(-1);
+                onPlayerEaten.Invoke();
+                other.gameObject.GetComponent<DodoController2>().PlayerDiesSequence();
+            }
+        }
+        else if (other.gameObject.CompareTag("GoldenDodo")) {
+            Debug.Log("Sky monkey collided with golden dodo");
+            // check if collides on top
+            float yoffset = (other.transform.position.y - this.transform.position.y);
+            Debug.Log("y offset: " + yoffset);
+            if (yoffset > 0.34f) {
+                Debug.Log("Kill Enemy");
+                KillSelf();
+            }
+            else if (!other.gameObject.GetComponent<DodoController2>().getImmunity()) {
+                Debug.Log("Kill Player");
+                goldenDodo.AddLives(-1);
+                onPlayerEaten.Invoke();
+                other.gameObject.GetComponent<DodoController2>().PlayerDiesSequence();
+            }
+        }
+        else if (other.gameObject.CompareTag("PirateDodo")) {
+            Debug.Log("Sky monkey collided with pirate dodo");
+            // check if collides on top
+            float yoffset = (other.transform.position.y - this.transform.position.y);
+            Debug.Log("y offset: " + yoffset);
+            if (yoffset > 0.34f) {
+                Debug.Log("Kill Enemy");
+                KillSelf();
+            }
+            else if (!other.gameObject.GetComponent<DodoController2>().getImmunity()) {
+                Debug.Log("Kill Player");
+                pirateDodo.AddLives(-1);
+                onPlayerEaten.Invoke();
+                other.gameObject.GetComponent<DodoController2>().PlayerDiesSequence();
+            }
+        }
+        else if (other.gameObject.CompareTag("RGBDodo")) {
+            Debug.Log("Sky monkey collided with rgb dodo");
+            // check if collides on top
+            float yoffset = (other.transform.position.y - this.transform.position.y);
+            Debug.Log("y offset: " + yoffset);
+            if (yoffset > 0.34f) {
+                Debug.Log("Kill Enemy");
+                KillSelf();
+            }
+            else if (!other.gameObject.GetComponent<DodoController2>().getImmunity()) {
+                Debug.Log("Kill Player");
+                rgbDodo.AddLives(-1);
+                onPlayerEaten.Invoke();
+                other.gameObject.GetComponent<DodoController2>().PlayerDiesSequence();
+            }
+        }
 	}
 
     void  KillSelf(){
 		// enemy dies
         monkeyDead = true;
         monkeyScream.Play();
-		StartCoroutine(flatten());
+		StartCoroutine("flatten");
 		Debug.Log("Kill sequence ends");
 	}
 
-    IEnumerator  flatten(){
+    IEnumerator flatten(){
 		Debug.Log("Flatten starts");
 		int steps =  30;
 		float stepper =  1.0f/(float) steps;
-
+		enemyBody.isKinematic = true;
 		for (int i =  0; i  <  steps; i  ++){
 			this.transform.localScale  =  new  Vector3(this.transform.localScale.x, this.transform.localScale.y  -  stepper, this.transform.localScale.z);
 

@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector2 direction = new Vector2(moveRight - moveLeft, moveUp - moveDown);
-        Debug.Log(direction);
+        // Debug.Log(direction);
         // dodoBody.MovePosition(dodoBody.position + speed * direction * Time.fixedDeltaTime);
         if (moveRight > 0) {
             dodoAnimator.SetBool("moveRight", true);

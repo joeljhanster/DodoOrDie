@@ -325,6 +325,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8256502868bb422d806c1b9680bff2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPlayerEaten:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c0dc2b57f5b008e47803c375585ead6b, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  flowerDodo: {fileID: 11400000, guid: 65ef5ed5aa8dcbd4692242c15b32a6da, type: 2}
+  goldenDodo: {fileID: 11400000, guid: fae6c45a54ee2bb42973e3cb4eb68d54, type: 2}
+  pirateDodo: {fileID: 11400000, guid: f8b622af39612d140b378f6331b6df2b, type: 2}
+  rgbDodo: {fileID: 11400000, guid: 075751afe86c8554380a6ba048a8db12, type: 2}
 --- !u!50 &2951051636037156792
 Rigidbody2D:
   serializedVersion: 4

@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     private float moveRight;
     private float moveUp;
     private float moveDown;
+    public GameConstants gameConstants;
 
     private PlayerControls controls;
 
@@ -37,6 +38,7 @@ public class MainMenu : MonoBehaviour
     {
         // Set to be 30 FPS
         Application.targetFrameRate =  30;
+        // Screen.SetResolution(Screen.width, Screen.width / 16 * 9);
     }
     void Update()
     {
@@ -51,7 +53,7 @@ public class MainMenu : MonoBehaviour
 
 
    public void PlayGame(){
-       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
    }
    public void QuitGame(){
        Debug.Log("Quit game");
